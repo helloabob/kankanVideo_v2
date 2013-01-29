@@ -10,20 +10,18 @@
 #import "KKSceneView.h"
 
 @interface KKHomeViewController () {
-    KKSceneView *sceneView;
+    KKSceneView *_sceneView;
 }
 
 @end
 
 @implementation KKHomeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void)loadView {
+    [super loadView];
+    [self.navigationController setNavigationBarHidden:YES];
+    _sceneView = [[KKSceneView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:_sceneView];
 }
 
 - (void)viewDidLoad

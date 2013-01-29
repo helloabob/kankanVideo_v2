@@ -38,6 +38,7 @@
 		9831DCB816B80F74005CF59D /* KKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeViewController.m; path = ViewControllers/KKHomeViewController.m; sourceTree = "<group>"; };
 		9831DCBA16B80FD1005CF59D /* KKSceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSceneView.h; path = CustomViews/KKSceneView.h; sourceTree = "<group>"; };
 		9831DCBB16B80FD1005CF59D /* KKSceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSceneView.m; path = CustomViews/KKSceneView.m; sourceTree = "<group>"; };
+		9831DCC116B81C33005CF59D /* KKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +90,7 @@
 				9831DCA716B80BDA005CF59D /* KKAppDelegate.h */,
 				9831DCA816B80BDA005CF59D /* KKAppDelegate.m */,
 				9831DC9F16B80BDA005CF59D /* Supporting Files */,
+				9831DCC116B81C33005CF59D /* KKConfig.h */,
 			);
 			path = kankanVideo_v2;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 				9831DCB416B80BDA005CF59D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

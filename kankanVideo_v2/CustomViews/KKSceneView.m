@@ -8,7 +8,21 @@
 
 #import "KKSceneView.h"
 
+@interface KKSceneView() {
+    UIButton *_btnArrow;
+    UIImageView *_imageView;
+}
+
+@end
+
 @implementation KKSceneView
+
+
+- (void)dealloc {
+    [_btnArrow release];
+    [_imageView release];
+    [super dealloc];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -16,6 +30,7 @@
     if (self) {
         // Initialization code
     }
+    [self setBackgroundColor:[UIColor blackColor]];
     return self;
 }
 
