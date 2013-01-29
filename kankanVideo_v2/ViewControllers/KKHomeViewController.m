@@ -7,9 +7,10 @@
 //
 
 #import "KKHomeViewController.h"
+#import "KKSceneView.h"
 
 @interface KKHomeViewController () {
-    
+    KKSceneView *sceneView;
 }
 
 @end
