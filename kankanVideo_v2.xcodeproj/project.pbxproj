@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9831DC9916B80BDA005CF59D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9831DC9816B80BDA005CF59D /* UIKit.framework */; };
+		9831DC9B16B80BDA005CF59D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9831DC9A16B80BDA005CF59D /* Foundation.framework */; };
+		9831DC9D16B80BDA005CF59D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9831DC9C16B80BDA005CF59D /* CoreGraphics.framework */; };
+		9831DCA316B80BDA005CF59D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCA116B80BDA005CF59D /* InfoPlist.strings */; };
+		9831DCA516B80BDA005CF59D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCA416B80BDA005CF59D /* main.m */; };
+		9831DCA916B80BDA005CF59D /* KKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCA816B80BDA005CF59D /* KKAppDelegate.m */; };
+		9831DCAB16B80BDA005CF59D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCAA16B80BDA005CF59D /* Default.png */; };
+		9831DCAD16B80BDA005CF59D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCAC16B80BDA005CF59D /* Default@2x.png */; };
+		9831DCAF16B80BDA005CF59D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCAE16B80BDA005CF59D /* Default-568h@2x.png */; };
+		9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCB816B80F74005CF59D /* KKHomeViewController.m */; };
+		9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCBB16B80FD1005CF59D /* KKSceneView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9831DC9416B80BDA005CF59D /* kankanVideo_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kankanVideo_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9831DC9816B80BDA005CF59D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9831DC9A16B80BDA005CF59D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9831DC9C16B80BDA005CF59D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9831DCA016B80BDA005CF59D /* kankanVideo_v2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kankanVideo_v2-Info.plist"; sourceTree = "<group>"; };
+		9831DCA216B80BDA005CF59D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9831DCA416B80BDA005CF59D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9831DCA616B80BDA005CF59D /* kankanVideo_v2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kankanVideo_v2-Prefix.pch"; sourceTree = "<group>"; };
+		9831DCA716B80BDA005CF59D /* KKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAppDelegate.h; sourceTree = "<group>"; };
+		9831DCA816B80BDA005CF59D /* KKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAppDelegate.m; sourceTree = "<group>"; };
+		9831DCAA16B80BDA005CF59D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9831DCAC16B80BDA005CF59D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9831DCAE16B80BDA005CF59D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9831DCB716B80F74005CF59D /* KKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKHomeViewController.h; path = ViewControllers/KKHomeViewController.h; sourceTree = "<group>"; };
+		9831DCB816B80F74005CF59D /* KKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeViewController.m; path = ViewControllers/KKHomeViewController.m; sourceTree = "<group>"; };
+		9831DCBA16B80FD1005CF59D /* KKSceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSceneView.h; path = CustomViews/KKSceneView.h; sourceTree = "<group>"; };
+		9831DCBB16B80FD1005CF59D /* KKSceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSceneView.m; path = CustomViews/KKSceneView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9831DC9116B80BDA005CF59D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9831DC9916B80BDA005CF59D /* UIKit.framework in Frameworks */,
+				9831DC9B16B80BDA005CF59D /* Foundation.framework in Frameworks */,
+				9831DC9D16B80BDA005CF59D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9831DC8916B80BDA005CF59D = {
+			isa = PBXGroup;
+			children = (
+				9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */,
+				9831DC9716B80BDA005CF59D /* Frameworks */,
+				9831DC9516B80BDA005CF59D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9831DC9516B80BDA005CF59D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9831DC9416B80BDA005CF59D /* kankanVideo_v2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9831DC9716B80BDA005CF59D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9831DC9816B80BDA005CF59D /* UIKit.framework */,
+				9831DC9A16B80BDA005CF59D /* Foundation.framework */,
+				9831DC9C16B80BDA005CF59D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCB616B80C2A005CF59D /* CustomViews */,
+				9831DCB516B80C24005CF59D /* ViewControllers */,
+				9831DCA716B80BDA005CF59D /* KKAppDelegate.h */,
+				9831DCA816B80BDA005CF59D /* KKAppDelegate.m */,
+				9831DC9F16B80BDA005CF59D /* Supporting Files */,
+			);
+			path = kankanVideo_v2;
+			sourceTree = "<group>";
+		};
+		9831DC9F16B80BDA005CF59D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCA016B80BDA005CF59D /* kankanVideo_v2-Info.plist */,
+				9831DCA116B80BDA005CF59D /* InfoPlist.strings */,
+				9831DCA416B80BDA005CF59D /* main.m */,
+				9831DCA616B80BDA005CF59D /* kankanVideo_v2-Prefix.pch */,
+				9831DCAA16B80BDA005CF59D /* Default.png */,
+				9831DCAC16B80BDA005CF59D /* Default@2x.png */,
+				9831DCAE16B80BDA005CF59D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9831DCB516B80C24005CF59D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCB716B80F74005CF59D /* KKHomeViewController.h */,
+				9831DCB816B80F74005CF59D /* KKHomeViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9831DCB616B80C2A005CF59D /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCBA16B80FD1005CF59D /* KKSceneView.h */,
+				9831DCBB16B80FD1005CF59D /* KKSceneView.m */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9831DC9316B80BDA005CF59D /* kankanVideo_v2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9831DCB216B80BDA005CF59D /* Build configuration list for PBXNativeTarget "kankanVideo_v2" */;
+			buildPhases = (
+				9831DC9016B80BDA005CF59D /* Sources */,
+				9831DC9116B80BDA005CF59D /* Frameworks */,
+				9831DC9216B80BDA005CF59D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kankanVideo_v2;
+			productName = kankanVideo_v2;
+			productReference = 9831DC9416B80BDA005CF59D /* kankanVideo_v2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9831DC8B16B80BDA005CF59D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KK;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = wangbo;
+			};
+			buildConfigurationList = 9831DC8E16B80BDA005CF59D /* Build configuration list for PBXProject "kankanVideo_v2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9831DC8916B80BDA005CF59D;
+			productRefGroup = 9831DC9516B80BDA005CF59D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9831DC9316B80BDA005CF59D /* kankanVideo_v2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9831DC9216B80BDA005CF59D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9831DCA316B80BDA005CF59D /* InfoPlist.strings in Resources */,
+				9831DCAB16B80BDA005CF59D /* Default.png in Resources */,
+				9831DCAD16B80BDA005CF59D /* Default@2x.png in Resources */,
+				9831DCAF16B80BDA005CF59D /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9831DC9016B80BDA005CF59D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9831DCA516B80BDA005CF59D /* main.m in Sources */,
+				9831DCA916B80BDA005CF59D /* KKAppDelegate.m in Sources */,
+				9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */,
+				9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9831DCA116B80BDA005CF59D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9831DCA216B80BDA005CF59D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9831DCB016B80BDA005CF59D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9831DCB116B80BDA005CF59D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9831DCB316B80BDA005CF59D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
+				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9831DCB416B80BDA005CF59D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
+				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9831DC8E16B80BDA005CF59D /* Build configuration list for PBXProject "kankanVideo_v2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9831DCB016B80BDA005CF59D /* Debug */,
+				9831DCB116B80BDA005CF59D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9831DCB216B80BDA005CF59D /* Build configuration list for PBXNativeTarget "kankanVideo_v2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9831DCB316B80BDA005CF59D /* Debug */,
+				9831DCB416B80BDA005CF59D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9831DC8B16B80BDA005CF59D /* Project object */;
+}
