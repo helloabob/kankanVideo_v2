@@ -18,6 +18,14 @@
 		9831DCAF16B80BDA005CF59D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCAE16B80BDA005CF59D /* Default-568h@2x.png */; };
 		9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCB816B80F74005CF59D /* KKHomeViewController.m */; };
 		9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCBB16B80FD1005CF59D /* KKSceneView.m */; };
+		9831DCCE16B82B33005CF59D /* home_bj@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCCB16B82B32005CF59D /* home_bj@2x.jpg */; };
+		9831DCCF16B82B33005CF59D /* home_bj-568h.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCCC16B82B32005CF59D /* home_bj-568h.jpg */; };
+		9831DCD216B82B40005CF59D /* home_bj.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD116B82B40005CF59D /* home_bj.jpg */; };
+		9831DCD716B82C8D005CF59D /* kk_enter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD316B82C8D005CF59D /* kk_enter.png */; };
+		9831DCD816B82C8D005CF59D /* kk_enter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD416B82C8D005CF59D /* kk_enter@2x.png */; };
+		9831DCD916B82C8D005CF59D /* kk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD516B82C8D005CF59D /* kk_logo.png */; };
+		9831DCDA16B82C8D005CF59D /* kk_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD616B82C8D005CF59D /* kk_logo@2x.png */; };
+		9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDC16B83D22005CF59D /* KKHomeItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +47,15 @@
 		9831DCBA16B80FD1005CF59D /* KKSceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSceneView.h; path = CustomViews/KKSceneView.h; sourceTree = "<group>"; };
 		9831DCBB16B80FD1005CF59D /* KKSceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSceneView.m; path = CustomViews/KKSceneView.m; sourceTree = "<group>"; };
 		9831DCC116B81C33005CF59D /* KKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKConfig.h; sourceTree = "<group>"; };
+		9831DCCB16B82B32005CF59D /* home_bj@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "home_bj@2x.jpg"; path = "images/home/home_bj@2x.jpg"; sourceTree = "<group>"; };
+		9831DCCC16B82B32005CF59D /* home_bj-568h.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "home_bj-568h.jpg"; path = "images/home/home_bj-568h.jpg"; sourceTree = "<group>"; };
+		9831DCD116B82B40005CF59D /* home_bj.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = home_bj.jpg; path = images/home/home_bj.jpg; sourceTree = "<group>"; };
+		9831DCD316B82C8D005CF59D /* kk_enter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kk_enter.png; path = images/home/kk_enter.png; sourceTree = "<group>"; };
+		9831DCD416B82C8D005CF59D /* kk_enter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kk_enter@2x.png"; path = "images/home/kk_enter@2x.png"; sourceTree = "<group>"; };
+		9831DCD516B82C8D005CF59D /* kk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kk_logo.png; path = images/home/kk_logo.png; sourceTree = "<group>"; };
+		9831DCD616B82C8D005CF59D /* kk_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kk_logo@2x.png"; path = "images/home/kk_logo@2x.png"; sourceTree = "<group>"; };
+		9831DCDB16B83D22005CF59D /* KKHomeItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKHomeItemView.h; path = CustomViews/KKHomeItemView.h; sourceTree = "<group>"; };
+		9831DCDC16B83D22005CF59D /* KKHomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeItemView.m; path = CustomViews/KKHomeItemView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +102,7 @@
 		9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */ = {
 			isa = PBXGroup;
 			children = (
+				9831DCC716B82947005CF59D /* images */,
 				9831DCB616B80C2A005CF59D /* CustomViews */,
 				9831DCB516B80C24005CF59D /* ViewControllers */,
 				9831DCA716B80BDA005CF59D /* KKAppDelegate.h */,
@@ -123,8 +141,32 @@
 			children = (
 				9831DCBA16B80FD1005CF59D /* KKSceneView.h */,
 				9831DCBB16B80FD1005CF59D /* KKSceneView.m */,
+				9831DCDB16B83D22005CF59D /* KKHomeItemView.h */,
+				9831DCDC16B83D22005CF59D /* KKHomeItemView.m */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		9831DCC716B82947005CF59D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCC816B82950005CF59D /* home */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		9831DCC816B82950005CF59D /* home */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCD316B82C8D005CF59D /* kk_enter.png */,
+				9831DCD416B82C8D005CF59D /* kk_enter@2x.png */,
+				9831DCD516B82C8D005CF59D /* kk_logo.png */,
+				9831DCD616B82C8D005CF59D /* kk_logo@2x.png */,
+				9831DCD116B82B40005CF59D /* home_bj.jpg */,
+				9831DCCB16B82B32005CF59D /* home_bj@2x.jpg */,
+				9831DCCC16B82B32005CF59D /* home_bj-568h.jpg */,
+			);
+			name = home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +225,13 @@
 				9831DCAB16B80BDA005CF59D /* Default.png in Resources */,
 				9831DCAD16B80BDA005CF59D /* Default@2x.png in Resources */,
 				9831DCAF16B80BDA005CF59D /* Default-568h@2x.png in Resources */,
+				9831DCCE16B82B33005CF59D /* home_bj@2x.jpg in Resources */,
+				9831DCCF16B82B33005CF59D /* home_bj-568h.jpg in Resources */,
+				9831DCD216B82B40005CF59D /* home_bj.jpg in Resources */,
+				9831DCD716B82C8D005CF59D /* kk_enter.png in Resources */,
+				9831DCD816B82C8D005CF59D /* kk_enter@2x.png in Resources */,
+				9831DCD916B82C8D005CF59D /* kk_logo.png in Resources */,
+				9831DCDA16B82C8D005CF59D /* kk_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +246,7 @@
 				9831DCA916B80BDA005CF59D /* KKAppDelegate.m in Sources */,
 				9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */,
 				9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */,
+				9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

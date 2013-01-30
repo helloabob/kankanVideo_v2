@@ -8,9 +8,12 @@
 
 #import "KKSceneView.h"
 
+#define BUTTON_FRAME CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
+#define LOGO_FRAME CGRectMake(10,10,60,78)
+
 @interface KKSceneView() {
     UIButton *_btnArrow;
-    UIImageView *_imageView;
+    UIImageView *_imageBack;
 }
 
 @end
@@ -19,8 +22,7 @@
 
 
 - (void)dealloc {
-    [_btnArrow release];
-    [_imageView release];
+    NSLog(@"aaa");
     [super dealloc];
 }
 
@@ -31,16 +33,31 @@
         // Initialization code
     }
     [self setBackgroundColor:[UIColor blackColor]];
+    
+    _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_bj.jpg"]];
+    [self addSubview:_imageBack];
+    [_imageBack release];
+    
+    _btnArrow = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_btnArrow setBackgroundImage:[UIImage imageNamed:@"kk_enter"] forState:UIControlStateNormal];
+    [_btnArrow setFrame:BUTTON_FRAME];
+    [_btnArrow addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_btnArrow];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kk_logo"]];
+    [imageView setFrame:LOGO_FRAME];
+    [self addSubview:imageView];
+    [imageView release];
+    
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)btnTapped:(UIControlEvents *)sender {
+    [UIView animateWithDuration:1.0f animations:^{
+        [self setAlpha:0];
+    }completion:^(BOOL finished){
+        [self removeFromSuperview];
+    }];
 }
-*/
 
 @end
