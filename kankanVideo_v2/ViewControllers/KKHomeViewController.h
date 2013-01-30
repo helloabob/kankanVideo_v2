@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKHomeItemView.h"
 
-@interface KKHomeViewController : UIViewController
+@interface KKHomeViewController : UIViewController<KKHomeItemViewDelegate>
 
 @end

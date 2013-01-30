@@ -8,12 +8,12 @@
 
 #import "KKSceneView.h"
 
-#define BUTTON_FRAME CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
-#define LOGO_FRAME CGRectMake(10,10,60,78)
+#define BUTTON_FRAME        CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
+#define LOGO_FRAME          CGRectMake(10,10,60,78)
 
 @interface KKSceneView() {
-    UIButton *_btnArrow;
-    UIImageView *_imageBack;
+    UIButton *_btnArrow;        //右箭头按钮
+    UIImageView *_imageBack;    //背景图片
 }
 
 @end
@@ -22,7 +22,6 @@
 
 
 - (void)dealloc {
-    NSLog(@"aaa");
     [super dealloc];
 }
 

@@ -26,6 +26,7 @@
 		9831DCD916B82C8D005CF59D /* kk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD516B82C8D005CF59D /* kk_logo.png */; };
 		9831DCDA16B82C8D005CF59D /* kk_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD616B82C8D005CF59D /* kk_logo@2x.png */; };
 		9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDC16B83D22005CF59D /* KKHomeItemView.m */; };
+		9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDF16B8C947005CF59D /* KKListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		9831DCD616B82C8D005CF59D /* kk_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kk_logo@2x.png"; path = "images/home/kk_logo@2x.png"; sourceTree = "<group>"; };
 		9831DCDB16B83D22005CF59D /* KKHomeItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKHomeItemView.h; path = CustomViews/KKHomeItemView.h; sourceTree = "<group>"; };
 		9831DCDC16B83D22005CF59D /* KKHomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeItemView.m; path = CustomViews/KKHomeItemView.m; sourceTree = "<group>"; };
+		9831DCDE16B8C947005CF59D /* KKListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKListViewController.h; path = ViewControllers/KKListViewController.h; sourceTree = "<group>"; };
+		9831DCDF16B8C947005CF59D /* KKListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKListViewController.m; path = ViewControllers/KKListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 			children = (
 				9831DCB716B80F74005CF59D /* KKHomeViewController.h */,
 				9831DCB816B80F74005CF59D /* KKHomeViewController.m */,
+				9831DCDE16B8C947005CF59D /* KKListViewController.h */,
+				9831DCDF16B8C947005CF59D /* KKListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */,
 				9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */,
 				9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */,
+				9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

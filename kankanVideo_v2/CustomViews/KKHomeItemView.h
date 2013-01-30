@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KKHomeItemViewDelegate
+@required
+- (void) itemTapped;
+
+@end
+
 @interface KKHomeItemView : UIView
+
+@property(nonatomic, assign)id<KKHomeItemViewDelegate>delegate;
+
+- (id)initWithFrame:(CGRect)frame withParam:(NSArray *)param;
+
 
 @end
