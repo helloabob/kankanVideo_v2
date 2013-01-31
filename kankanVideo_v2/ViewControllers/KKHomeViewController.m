@@ -35,7 +35,7 @@
     return CGRectMake(x, y, 120, 90);
 }
 
-//整理界面上的item元素位置
+//整理界面上的item元素位置 并重新设置scrollview的尺寸
 - (void)tidyItems {
     [UIView animateWithDuration:0.5f animations:^{
         for (u_int32_t i = 0; i < _itemArray.count; i ++) {
@@ -43,6 +43,9 @@
             [item setFrame:[self calculateRect:i]];
         }
     }];
+    const int numPerPage = iPhone5?10:8;
+    int pages = _itemArray.count / numPerPage;
+    _contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width*(pages+1),self.view.frame.size.height);
 }
 
 - (void)dealloc {
@@ -60,6 +63,7 @@
     [_sceneView release];
     
     _contentScrollView = [[UIScrollView alloc] initWithFrame:SCENE_FRAME];
+    [_contentScrollView setPagingEnabled:YES];
     [self.view addSubview:_contentScrollView];
     [_contentScrollView release];
     
@@ -69,16 +73,16 @@
     
     for (u_int32_t i = 0; i < 10; i ++) {
         KKHomeItemView *itemView = [[KKHomeItemView alloc] initWithFrame:[self calculateRect:i] withParam:arr];
-        [self.view addSubview:itemView];
+        [_contentScrollView addSubview:itemView];
         [itemView setDelegate:self];
         [itemView release];
         
         [_itemArray addObject:itemView];
     }
     [self.view setClipsToBounds:YES];
-    
     [self.view bringSubviewToFront:_sceneView];
     
+    [self tidyItems];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

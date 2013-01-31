@@ -12,6 +12,7 @@
     NSString *_fileUrl;
     NSMutableData *_fileData;
     BOOL _shouldExit;
+    NSURLConnection *_conn;
 }
 
 @end
@@ -72,6 +73,14 @@
     } else {
         NSError *err = [NSError errorWithDomain:@"KKFileDownloadManager" code:404 userInfo:nil];
         [delegate fileDidFailed:self withError:err];
+    }
+}
+
+- (void)stopDownload {
+    _shouldExit = YES;
+    if (_conn) {
+        [_conn release];
+        _conn = nil;
     }
 }
 

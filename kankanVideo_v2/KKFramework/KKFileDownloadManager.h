@@ -21,5 +21,6 @@
 
 @property(nonatomic,assign)id<KKFileDownloadManagerDelegate>delegate;
 - (void)downloadFile:(NSString *)url;
+- (void)stopDownload;
 
 @end

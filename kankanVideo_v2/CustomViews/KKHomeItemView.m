@@ -56,31 +56,25 @@
     [self addSubview:_btnClose];
     
     _tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    [_tapGest setDelegate:self];
+    [_tapGest setCancelsTouchesInView:NO];
     [self addGestureRecognizer:_tapGest];
     
     _longGest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(viewLongPressed:)];
+    [_longGest setDelegate:self];
     [self addGestureRecognizer:_longGest];
     
     return self;
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    //id element = gestureRecognizer.view;
-    NSLog(@"%@",gestureRecognizer.view);
-    return NO;
-//    if ([element isKindOfClass:[UIButton class]]) {
-//        return NO;
-//    } else {
-//        return YES;
-//    }
-}
-
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    id element = gestureRecognizer.view;
-    NSLog(@"%@",gestureRecognizer.view);
-    if ([element isKindOfClass:[UIButton class]]) {
+    //if ([gestureRecognizer.view isKindOfClass:[UIButton class]]) {
+    NSLog(@"%@",[gestureRecognizer locationInView:self]);
+    if ([gestureRecognizer locationInView:self].x<_btnClose.frame.size.width && [gestureRecognizer locationInView:self].y<_btnClose.frame.size.height) {
+        NSLog(@"no");
         return NO;
     } else {
+        NSLog(@"yes");
         return YES;
     }
 }
@@ -98,8 +92,8 @@
         //[self removeGestureRecognizer:_longGest];
     } else {
         [_btnClose setHidden:YES];
-        [self addGestureRecognizer:_tapGest];
-        [self addGestureRecognizer:_longGest];
+        //[self addGestureRecognizer:_tapGest];
+        //[self addGestureRecognizer:_longGest];
     }
 }
 

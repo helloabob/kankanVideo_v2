@@ -22,7 +22,7 @@ typedef enum {
 
 @end
 
-@interface KKHomeItemView : UIView
+@interface KKHomeItemView : UIView<UIGestureRecognizerDelegate>
 
 @property(nonatomic, assign)id<KKHomeItemViewDelegate>delegate;
 
