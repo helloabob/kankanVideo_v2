@@ -27,6 +27,10 @@
 		9831DCDA16B82C8D005CF59D /* kk_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD616B82C8D005CF59D /* kk_logo@2x.png */; };
 		9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDC16B83D22005CF59D /* KKHomeItemView.m */; };
 		9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDF16B8C947005CF59D /* KKListViewController.m */; };
+		9831DCE816B8FACF005CF59D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCE716B8FACF005CF59D /* Reachability.m */; };
+		9831DCEC16B8FD21005CF59D /* KKFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */; };
+		9831DCF016B90294005CF59D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9831DCEF16B90294005CF59D /* SystemConfiguration.framework */; };
+		985071D916B956140096CCF4 /* KKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985071D816B956140096CCF4 /* KKFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,13 @@
 		9831DCDC16B83D22005CF59D /* KKHomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeItemView.m; path = CustomViews/KKHomeItemView.m; sourceTree = "<group>"; };
 		9831DCDE16B8C947005CF59D /* KKListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKListViewController.h; path = ViewControllers/KKListViewController.h; sourceTree = "<group>"; };
 		9831DCDF16B8C947005CF59D /* KKListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKListViewController.m; path = ViewControllers/KKListViewController.m; sourceTree = "<group>"; };
+		9831DCE616B8FACF005CF59D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ThirdParty/Reachability.h; sourceTree = "<group>"; };
+		9831DCE716B8FACF005CF59D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ThirdParty/Reachability.m; sourceTree = "<group>"; };
+		9831DCEA16B8FD21005CF59D /* KKFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKFileDownloadManager.h; path = KKFramework/KKFileDownloadManager.h; sourceTree = "<group>"; };
+		9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileDownloadManager.m; path = KKFramework/KKFileDownloadManager.m; sourceTree = "<group>"; };
+		9831DCEF16B90294005CF59D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		985071D716B956140096CCF4 /* KKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKFileManager.h; path = KKFramework/KKFileManager.h; sourceTree = "<group>"; };
+		985071D816B956140096CCF4 /* KKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileManager.m; path = KKFramework/KKFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9831DCF016B90294005CF59D /* SystemConfiguration.framework in Frameworks */,
 				9831DC9916B80BDA005CF59D /* UIKit.framework in Frameworks */,
 				9831DC9B16B80BDA005CF59D /* Foundation.framework in Frameworks */,
 				9831DC9D16B80BDA005CF59D /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +107,7 @@
 		9831DC9716B80BDA005CF59D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9831DCEF16B90294005CF59D /* SystemConfiguration.framework */,
 				9831DC9816B80BDA005CF59D /* UIKit.framework */,
 				9831DC9A16B80BDA005CF59D /* Foundation.framework */,
 				9831DC9C16B80BDA005CF59D /* CoreGraphics.framework */,
@@ -105,6 +118,8 @@
 		9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */ = {
 			isa = PBXGroup;
 			children = (
+				9831DCE916B8FCEC005CF59D /* KKFramework */,
+				9831DCE516B8FA97005CF59D /* ThirdParty */,
 				9831DCC716B82947005CF59D /* images */,
 				9831DCB616B80C2A005CF59D /* CustomViews */,
 				9831DCB516B80C24005CF59D /* ViewControllers */,
@@ -172,6 +187,26 @@
 				9831DCCC16B82B32005CF59D /* home_bj-568h.jpg */,
 			);
 			name = home;
+			sourceTree = "<group>";
+		};
+		9831DCE516B8FA97005CF59D /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCE616B8FACF005CF59D /* Reachability.h */,
+				9831DCE716B8FACF005CF59D /* Reachability.m */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		9831DCE916B8FCEC005CF59D /* KKFramework */ = {
+			isa = PBXGroup;
+			children = (
+				9831DCEA16B8FD21005CF59D /* KKFileDownloadManager.h */,
+				9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */,
+				985071D716B956140096CCF4 /* KKFileManager.h */,
+				985071D816B956140096CCF4 /* KKFileManager.m */,
+			);
+			name = KKFramework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +288,9 @@
 				9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */,
 				9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */,
 				9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */,
+				9831DCE816B8FACF005CF59D /* Reachability.m in Sources */,
+				9831DCEC16B8FD21005CF59D /* KKFileDownloadManager.m in Sources */,
+				985071D916B956140096CCF4 /* KKFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

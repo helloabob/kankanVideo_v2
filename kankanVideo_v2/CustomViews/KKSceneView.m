@@ -8,8 +8,11 @@
 
 #import "KKSceneView.h"
 
-#define BUTTON_FRAME        CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
-#define LOGO_FRAME          CGRectMake(10,10,60,78)
+#define BUTTON_FRAME                CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
+#define LOGO_FRAME                  CGRectMake(10,10,60,78)
+
+#define DEFAULT_HOME_IMAGE_NAME     @"home_bj.jpg"
+#define HOME_IMAGE_PATH             @"home_bj.jpg"
 
 @interface KKSceneView() {
     UIButton *_btnArrow;        //右箭头按钮
@@ -33,7 +36,16 @@
     }
     [self setBackgroundColor:[UIColor blackColor]];
     
-    _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_bj.jpg"]];
+    if ([KKFileManager fileExists:HOME_IMAGE_PATH ofType:LibraryPath] == YES) {
+        NSLog(@"aa");
+        _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[KKFileManager fileDataWithPath:HOME_IMAGE_PATH ofType:LibraryPath]]];
+    } else {
+        _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:DEFAULT_HOME_IMAGE_NAME]];
+        KKFileDownloadManager *downloadManager = [[KKFileDownloadManager alloc] init];
+        [downloadManager setDelegate:self];
+        [downloadManager downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
+    }
+    
     [self addSubview:_imageBack];
     [_imageBack release];
     
@@ -48,7 +60,15 @@
     [self addSubview:imageView];
     [imageView release];
     
+    //[[KKFileDownloadManager sharedInstance] downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
+    //[[KKFileDownloadManager sharedInstance] setDelegate:self];
     return self;
+}
+
+- (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData {
+    NSLog(@"fileDidDownloadSuccessfully");
+    [KKFileManager writeToFile:HOME_IMAGE_PATH ofType:LibraryPath withData:fileData];
+    [downloadManager release];
 }
 
 - (void)btnTapped:(UIControlEvents *)sender {

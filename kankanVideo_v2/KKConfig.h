@@ -11,4 +11,8 @@
 
 #define iPhone5                 ([UIScreen mainScreen].bounds.size.height == 568)
 
+#import "Reachability.h"
+#import "KKFileDownloadManager.h"
+#import "KKFileManager.h"
+
 #endif
