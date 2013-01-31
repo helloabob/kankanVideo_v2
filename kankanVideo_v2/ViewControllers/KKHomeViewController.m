@@ -15,9 +15,10 @@
 #define HOME_ITEM2_FRAME    CGRectMake(140,30,120,90)
 
 @interface KKHomeViewController () {
-    KKSceneView *_sceneView;
-    KKListViewController *_listViewController;
-    UILabel *_str;
+    KKSceneView             *_sceneView;                   //封面界面
+    KKListViewController    *_listViewController;          //列表界面
+    NSMutableArray          *_itemArray;                   //item数组
+    UIScrollView            *_contentScrollView;           //item所在滚动视图
 }
 
 @end
@@ -34,6 +35,22 @@
     return CGRectMake(x, y, 120, 90);
 }
 
+//整理界面上的item元素位置
+- (void)tidyItems {
+    [UIView animateWithDuration:0.5f animations:^{
+        for (u_int32_t i = 0; i < _itemArray.count; i ++) {
+            UIView *item = _itemArray[i];
+            [item setFrame:[self calculateRect:i]];
+        }
+    }];
+}
+
+- (void)dealloc {
+    [_listViewController release];
+    [_itemArray release];
+    [super dealloc];
+}
+
 - (void)loadView {
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -42,6 +59,12 @@
     [self.view addSubview:_sceneView];
     [_sceneView release];
     
+    _contentScrollView = [[UIScrollView alloc] initWithFrame:SCENE_FRAME];
+    [self.view addSubview:_contentScrollView];
+    [_contentScrollView release];
+    
+    _itemArray = [[NSMutableArray alloc] init];
+    
     NSArray *arr = [NSArray arrayWithObject:@"测试"];
     
     for (u_int32_t i = 0; i < 10; i ++) {
@@ -49,6 +72,8 @@
         [self.view addSubview:itemView];
         [itemView setDelegate:self];
         [itemView release];
+        
+        [_itemArray addObject:itemView];
     }
     [self.view setClipsToBounds:YES];
     
@@ -60,12 +85,25 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
+#pragma KKHomeItemViewDelegate
+
 - (void)itemTapped {
     if (!_listViewController) {
         _listViewController = [[KKListViewController alloc] init]; 
     }
     [self.navigationController pushViewController:_listViewController animated:YES];
 }
+
+- (void)itemLongPressed {
+    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemRemovableStatus]];
+}
+
+- (void)itemViewDidRemoved:(KKHomeItemView *)homeItemView {
+    [_itemArray removeObject:homeItemView];
+    [self tidyItems];
+}
+
+#pragma end
 
 - (void)viewDidLoad
 {

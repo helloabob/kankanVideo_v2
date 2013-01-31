@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KKHomeItemView;
+
+typedef enum {
+    ItemNormalStatus = 0,
+    ItemRemovableStatus,
+} ItemStatus;
 
 @protocol KKHomeItemViewDelegate
 @required
 - (void) itemTapped;
+- (void) itemLongPressed;
+- (void) itemViewDidRemoved:(KKHomeItemView *)homeItemView;
 
 @end
 

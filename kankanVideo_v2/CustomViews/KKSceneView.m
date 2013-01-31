@@ -37,7 +37,6 @@
     [self setBackgroundColor:[UIColor blackColor]];
     
     if ([KKFileManager fileExists:HOME_IMAGE_PATH ofType:LibraryPath] == YES) {
-        NSLog(@"aa");
         _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[KKFileManager fileDataWithPath:HOME_IMAGE_PATH ofType:LibraryPath]]];
     } else {
         _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:DEFAULT_HOME_IMAGE_NAME]];
@@ -45,6 +44,9 @@
         [downloadManager setDelegate:self];
         [downloadManager downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
     }
+    
+    [_imageBack release];
+    _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default"]];
     
     [self addSubview:_imageBack];
     [_imageBack release];
@@ -60,14 +62,17 @@
     [self addSubview:imageView];
     [imageView release];
     
-    //[[KKFileDownloadManager sharedInstance] downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
-    //[[KKFileDownloadManager sharedInstance] setDelegate:self];
     return self;
 }
 
 - (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData {
     NSLog(@"fileDidDownloadSuccessfully");
     [KKFileManager writeToFile:HOME_IMAGE_PATH ofType:LibraryPath withData:fileData];
+    [downloadManager release];
+}
+
+- (void)fileDidFailed:(KKFileDownloadManager *)downloadManager withError:(NSError *)error {
+    NSLog(@"fileDidFailed");
     [downloadManager release];
 }
 

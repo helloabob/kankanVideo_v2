@@ -11,37 +11,15 @@
 @implementation KKFileManager
 
 + (void)writeToFile:(NSString *)filename ofType:(PathType)pathType withData:(NSData *)filedata {
-//    NSArray *array = nil;
-//    if (pathType == LibraryPath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-//    } else if (pathType == DocumentPath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    } else if (pathType == CachePath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-//    }
-//    NSString *filepath = [array objectAtIndex:0];
-//    [filepath stringByAppendingPathComponent:filename];
     [filedata writeToFile:[KKFileManager filepathforFilename:filename forType:pathType] atomically:YES];
 }
 
 + (BOOL)fileExists:(NSString *)filename ofType:(PathType)pathType {
-//    NSArray *array = nil;
-//    if (pathType == LibraryPath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-//    } else if (pathType == DocumentPath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    } else if (pathType == CachePath) {
-//        array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-//    }
-//    NSString *filepath = [array objectAtIndex:0];
-//    [filepath stringByAppendingPathComponent:filename];
     NSFileManager *fm = [NSFileManager defaultManager];
     return [fm fileExistsAtPath:[KKFileManager filepathforFilename:filename forType:pathType]];
 }
 
 + (NSData *)fileDataWithPath:(NSString *)filename ofType:(PathType)pathType {
-    
-    //NSLog(@"%@----%@",filepath,filename);
     return [NSData dataWithContentsOfFile:[KKFileManager filepathforFilename:filename forType:pathType]];
 }
 
@@ -55,7 +33,6 @@
         array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     }
     NSString *filepath = [array objectAtIndex:0];
-    NSLog(@"%@",[filepath stringByAppendingPathComponent:filename]);
     return [filepath stringByAppendingPathComponent:filename];
 }
 

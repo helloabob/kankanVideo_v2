@@ -13,13 +13,13 @@
 @protocol KKFileDownloadManagerDelegate
 @required
 - (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData;
+- (void)fileDidFailed:(KKFileDownloadManager *)downloadManager withError:(NSError *)error;
 
 @end
 
 @interface KKFileDownloadManager : NSObject<NSURLConnectionDataDelegate>
 
 @property(nonatomic,assign)id<KKFileDownloadManagerDelegate>delegate;
-+ (KKFileDownloadManager *)sharedInstance;
 - (void)downloadFile:(NSString *)url;
 
 @end

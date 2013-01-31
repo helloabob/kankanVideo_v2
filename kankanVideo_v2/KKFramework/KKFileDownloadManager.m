@@ -8,14 +8,10 @@
 
 #import "KKFileDownloadManager.h"
 
-static KKFileDownloadManager *_sharedInstance;
-
 @interface KKFileDownloadManager() {
-    BOOL _threadSwitch;
     NSString *_fileUrl;
     NSMutableData *_fileData;
     BOOL _shouldExit;
-    //NSMutableArray *_downloadFileArray;
 }
 
 @end
@@ -23,23 +19,15 @@ static KKFileDownloadManager *_sharedInstance;
 @implementation KKFileDownloadManager
 @synthesize delegate;
 
-+ (KKFileDownloadManager *)sharedInstance {
-    if (!_sharedInstance) {
-        _sharedInstance = [[KKFileDownloadManager alloc] init];
-        [NSThread detachNewThreadSelector:@selector(downloadThread) toTarget:_sharedInstance withObject:nil];
-    }
-    return _sharedInstance;
-}
-
 - (void)dealloc {
+    [_fileData release];
     delegate = nil;
     [super dealloc];
 }
 
 - (id)init {
     self = [super init];
-    _threadSwitch = YES;
-    
+    _fileData = [[NSMutableData alloc] init];
     return  self;
 }
 
@@ -55,6 +43,8 @@ static KKFileDownloadManager *_sharedInstance;
     [pool drain];
 }
 
+#pragma NSConnectionDataDelegate
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [_fileData appendData:data];
 }
@@ -63,14 +53,26 @@ static KKFileDownloadManager *_sharedInstance;
     [connection release];
     connection = nil;
     _shouldExit = YES;
-    [delegate fileDidDownloadSuccessfully:self withData:[_fileData autorelease]];
+    [delegate fileDidDownloadSuccessfully:self withData:_fileData];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [connection release];
+    connection = nil;
+    _shouldExit = YES;
+    [delegate fileDidFailed:self withError:error];
+}
+
+#pragma end
+
 - (void)downloadFile:(NSString *)url {
-    // TODO wangbo
-    _fileUrl = url;
-    _fileData = [[NSMutableData alloc] init];
-    [NSThread detachNewThreadSelector:@selector(downloadThread) toTarget:self withObject:nil];
+    if ([Reachability reachabilityForInternetConnection]) {
+        _fileUrl = url;
+        [NSThread detachNewThreadSelector:@selector(downloadThread) toTarget:self withObject:nil];
+    } else {
+        NSError *err = [NSError errorWithDomain:@"KKFileDownloadManager" code:404 userInfo:nil];
+        [delegate fileDidFailed:self withError:err];
+    }
 }
 
 @end
