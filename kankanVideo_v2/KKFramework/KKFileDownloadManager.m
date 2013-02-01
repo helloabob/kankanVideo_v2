@@ -9,10 +9,10 @@
 #import "KKFileDownloadManager.h"
 
 @interface KKFileDownloadManager() {
-    NSString *_fileUrl;
-    NSMutableData *_fileData;
-    BOOL _shouldExit;
-    NSURLConnection *_conn;
+    NSString *_fileUrl;                     //下载文件url地址
+    NSMutableData *_fileData;               //下载数据
+    BOOL _shouldExit;                       //线程关闭开关
+    NSURLConnection *_conn;                 //连接变量
 }
 
 @end
@@ -79,6 +79,7 @@
 - (void)stopDownload {
     _shouldExit = YES;
     if (_conn) {
+        [_conn cancel];
         [_conn release];
         _conn = nil;
     }

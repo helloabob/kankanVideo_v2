@@ -17,6 +17,7 @@
 @interface KKSceneView() {
     UIButton *_btnArrow;        //右箭头按钮
     UIImageView *_imageBack;    //背景图片
+    KKFileDownloadManager *_downloadManager;
 }
 
 @end
@@ -25,6 +26,7 @@
 
 
 - (void)dealloc {
+    [_downloadManager release];
     [super dealloc];
 }
 
@@ -40,9 +42,9 @@
         _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[KKFileManager fileDataWithPath:HOME_IMAGE_PATH ofType:LibraryPath]]];
     } else {
         _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:DEFAULT_HOME_IMAGE_NAME]];
-        KKFileDownloadManager *downloadManager = [[KKFileDownloadManager alloc] init];
-        [downloadManager setDelegate:self];
-        [downloadManager downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
+        _downloadManager = [[KKFileDownloadManager alloc] init];
+        [_downloadManager setDelegate:self];
+        [_downloadManager downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
     }
     
     [_imageBack release];
@@ -68,18 +70,17 @@
 - (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData {
     NSLog(@"fileDidDownloadSuccessfully");
     [KKFileManager writeToFile:HOME_IMAGE_PATH ofType:LibraryPath withData:fileData];
-    [downloadManager release];
 }
 
 - (void)fileDidFailed:(KKFileDownloadManager *)downloadManager withError:(NSError *)error {
     NSLog(@"fileDidFailed");
-    [downloadManager release];
 }
 
 - (void)btnTapped:(UIControlEvents *)sender {
     [UIView animateWithDuration:1.0f animations:^{
         [self setAlpha:0];
     }completion:^(BOOL finished){
+        [_downloadManager stopDownload];
         [self removeFromSuperview];
     }];
 }
