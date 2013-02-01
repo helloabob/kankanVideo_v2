@@ -10,15 +10,15 @@
 #import "KKSceneView.h"
 #import "KKListViewController.h"
 
-#define SCENE_FRAME         CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
-#define HOME_ITEM_FRAME     CGRectMake(10,30,120,90)
-#define HOME_ITEM2_FRAME    CGRectMake(140,30,120,90)
+#define SCENE_FRAME                 CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
+#define RIGHT_SETTING_VIEW_FRAME    CGRectMake(260,0,60,self.view.frame.size.height)
 
 @interface KKHomeViewController () {
     KKSceneView             *_sceneView;                   //封面界面
     KKListViewController    *_listViewController;          //列表界面
     NSMutableArray          *_itemArray;                   //item数组
     UIScrollView            *_contentScrollView;           //item所在滚动视图
+    UIView                  *_rightSettingView;            //右侧控制按钮区域及返回normal状态热点
 }
 
 @end
@@ -67,6 +67,10 @@
     [self.view addSubview:_contentScrollView];
     [_contentScrollView release];
     
+    _rightSettingView = [[UIView alloc] initWithFrame:RIGHT_SETTING_VIEW_FRAME];
+    [self.view addSubview:_rightSettingView];
+    [_rightSettingView release];
+    
     _itemArray = [[NSMutableArray alloc] init];
     
     NSArray *arr = [NSArray arrayWithObject:@"测试"];
@@ -100,6 +104,14 @@
 
 - (void)itemLongPressed {
     [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemRemovableStatus]];
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviseItemNormal:)];
+    [_rightSettingView addGestureRecognizer:tapGest];
+    [tapGest release];
+}
+
+- (void)reviseItemNormal:(UITapGestureRecognizer *)gest {
+    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
+    [_rightSettingView removeGestureRecognizer:gest];
 }
 
 - (void)itemViewDidRemoved:(KKHomeItemView *)homeItemView {

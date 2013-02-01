@@ -17,6 +17,7 @@
     UIButton *_btnClose;                        //item左上角关闭按钮
     UITapGestureRecognizer *_tapGest;           //点击事件
     UILongPressGestureRecognizer *_longGest;    //长按事件
+    ItemStatus _currentItemStatus;              //当前item状态
 }
 
 @end
@@ -38,6 +39,8 @@
         // Initialization code
     }
     [self setBackgroundColor:[UIColor grayColor]];
+    
+    _currentItemStatus = ItemNormalStatus;
     
     _arr = [param retain];
     _lblTitle = [[UILabel alloc] initWithFrame:BOTTOM_TITLE_FRAME];
@@ -68,14 +71,14 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    //if ([gestureRecognizer.view isKindOfClass:[UIButton class]]) {
-    NSLog(@"%@",[gestureRecognizer locationInView:self]);
-    if ([gestureRecognizer locationInView:self].x<_btnClose.frame.size.width && [gestureRecognizer locationInView:self].y<_btnClose.frame.size.height) {
-        NSLog(@"no");
-        return NO;
-    } else {
-        NSLog(@"yes");
+    if (_currentItemStatus == ItemNormalStatus) {
         return YES;
+    } else {
+        if ([gestureRecognizer locationInView:self].x<_btnClose.frame.size.width && [gestureRecognizer locationInView:self].y<_btnClose.frame.size.height) {
+            return NO;
+        } else {
+            return YES;
+        }
     }
 }
 
@@ -85,15 +88,15 @@
 }
 
 - (void)changeItemStatus:(NSNumber *)itemStatus {
-    ItemStatus _tmpStatus = [itemStatus intValue];
-    if (_tmpStatus == ItemRemovableStatus) {
+    _currentItemStatus = [itemStatus intValue];
+    if (_currentItemStatus == ItemRemovableStatus) {
         [_btnClose setHidden:NO];
-        //[self removeGestureRecognizer:_tapGest];
-        //[self removeGestureRecognizer:_longGest];
+        [self removeGestureRecognizer:_tapGest];
+        [self removeGestureRecognizer:_longGest];
     } else {
         [_btnClose setHidden:YES];
-        //[self addGestureRecognizer:_tapGest];
-        //[self addGestureRecognizer:_longGest];
+        [self addGestureRecognizer:_tapGest];
+        [self addGestureRecognizer:_longGest];
     }
 }
 
