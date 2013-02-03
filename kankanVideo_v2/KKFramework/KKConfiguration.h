@@ -14,4 +14,6 @@
 
 + (int)getHomeViewBackgroundIndex;
 
++ (NSArray *)getSubscriptionData;
+
 @end

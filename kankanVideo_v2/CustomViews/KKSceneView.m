@@ -47,9 +47,9 @@
                              saveCache:YES
                             completion:^(NSData *xmlData){
                                 if (xmlData) {
-                                    NSMutableArray *array = [KKXMLParser parseXML:xmlData withKeys:[NSArray arrayWithObject:@"titlepic"]];
+                                    NSMutableArray *array = [KKXMLParser parseXML:xmlData withKeys:[NSArray arrayWithObject:kXMLTitlePic]];
                                     _imageDownloadManager = [[KKFileDownloadManager alloc] init];
-                                    [_imageDownloadManager downloadFile:[[array objectAtIndex:[KKConfiguration getHomeViewBackgroundIndex]] objectForKey:@"titlepic"]
+                                    [_imageDownloadManager downloadFile:[[array objectAtIndex:[KKConfiguration getHomeViewBackgroundIndex]] objectForKey:kXMLTitlePic]
                                            readCache:YES
                                            saveCache:YES
                                           completion:^(NSData *imageData){

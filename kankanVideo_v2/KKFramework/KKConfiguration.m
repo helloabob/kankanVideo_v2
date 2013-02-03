@@ -24,7 +24,17 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
+    //初始化订阅数据
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSubscriptionKey]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSArray array] forKey:kSubscriptionKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     //
+}
+
++ (NSArray *)getSubscriptionData {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSubscriptionKey];
 }
 
 + (int)getHomeViewBackgroundIndex {

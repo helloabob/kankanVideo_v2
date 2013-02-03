@@ -17,17 +17,23 @@ typedef enum {
 
 @protocol KKHomeItemViewDelegate
 @required
-- (void) itemTapped;
-- (void) itemLongPressed;
+- (void) itemTapped:(KKHomeItemView *)itemView;
+- (void) itemLongPressed:(KKHomeItemView *)itemView;
 - (void) itemViewDidRemoved:(KKHomeItemView *)homeItemView;
+- (void) itemViewMovingWithGesture:(UIPanGestureRecognizer *)gest;
+- (void) itemViewDidMoved;
 
 @end
 
 @interface KKHomeItemView : UIView<UIGestureRecognizerDelegate>
 
+@property(nonatomic, retain)NSDictionary *itemData;
 @property(nonatomic, assign)id<KKHomeItemViewDelegate>delegate;
+@property(nonatomic, assign)NSInteger index;                        //item的排列索引
+@property(nonatomic, assign)BOOL pointIsHere;
+@property(nonatomic, assign)ItemStatus currentItemStatus;
 
-- (id)initWithFrame:(CGRect)frame withParam:(NSArray *)param;
+- (id)initWithFrame:(CGRect)frame withParam:(NSDictionary *)param;
 
 
 @end
