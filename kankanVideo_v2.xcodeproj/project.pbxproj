@@ -49,6 +49,8 @@
 		98AB48EE16BEA14300453B22 /* home_button_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AB48E816BEA14300453B22 /* home_button_setting@2x.png */; };
 		98AB48EF16BEA14300453B22 /* home_button_subscribe.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AB48E916BEA14300453B22 /* home_button_subscribe.png */; };
 		98AB48F016BEA14300453B22 /* home_button_subscribe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AB48EA16BEA14300453B22 /* home_button_subscribe@2x.png */; };
+		98AB48F416BEBF6C00453B22 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AB48F216BEBF6C00453B22 /* icon.png */; };
+		98AB48F516BEBF6C00453B22 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AB48F316BEBF6C00453B22 /* launch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +117,8 @@
 		98AB48E816BEA14300453B22 /* home_button_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home_button_setting@2x.png"; path = "images/home/home_button_setting@2x.png"; sourceTree = "<group>"; };
 		98AB48E916BEA14300453B22 /* home_button_subscribe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_button_subscribe.png; path = images/home/home_button_subscribe.png; sourceTree = "<group>"; };
 		98AB48EA16BEA14300453B22 /* home_button_subscribe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home_button_subscribe@2x.png"; path = "images/home/home_button_subscribe@2x.png"; sourceTree = "<group>"; };
+		98AB48F216BEBF6C00453B22 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/config/icon.png; sourceTree = "<group>"; };
+		98AB48F316BEBF6C00453B22 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch.png; path = images/config/launch.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 		9831DCC716B82947005CF59D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				98AB48F116BEBE3400453B22 /* config */,
 				9831DCC816B82950005CF59D /* home */,
 			);
 			name = images;
@@ -299,6 +304,15 @@
 			name = private;
 			sourceTree = "<group>";
 		};
+		98AB48F116BEBE3400453B22 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				98AB48F216BEBF6C00453B22 /* icon.png */,
+				98AB48F316BEBF6C00453B22 /* launch.png */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,6 +385,8 @@
 				98AB48EE16BEA14300453B22 /* home_button_setting@2x.png in Resources */,
 				98AB48EF16BEA14300453B22 /* home_button_subscribe.png in Resources */,
 				98AB48F016BEA14300453B22 /* home_button_subscribe@2x.png in Resources */,
+				98AB48F416BEBF6C00453B22 /* icon.png in Resources */,
+				98AB48F516BEBF6C00453B22 /* launch.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
