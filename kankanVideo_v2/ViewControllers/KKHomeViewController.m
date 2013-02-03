@@ -88,7 +88,7 @@
 
 - (void)loadView {
     [super loadView];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor grayColor]];
     
     _sceneView = [[KKSceneView alloc] initWithFrame:SCENE_FRAME];
     [self.view addSubview:_sceneView];
@@ -105,7 +105,7 @@
     [_contentScrollView release];
     
     _rightSettingView = [[UIView alloc] initWithFrame:RIGHT_SETTING_VIEW_FRAME];
-    [_rightSettingView setBackgroundColor:[UIColor grayColor]];
+    //[_rightSettingView setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:_rightSettingView];
     [_rightSettingView release];
     
@@ -114,21 +114,18 @@
     [btnRefresh setFrame:CGRectMake(0, 0, 40, 40)];
     [btnRefresh setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-4*50)];
     [_rightSettingView addSubview:btnRefresh];
-    [btnRefresh release];
     
     UIButton *btnSetting = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnSetting setBackgroundImage:[UIImage imageNamed:@"home_button_setting"] forState:UIControlStateNormal];
     [btnSetting setFrame:CGRectMake(0, 0, 40, 40)];
     [btnSetting setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-2*50)];
     [_rightSettingView addSubview:btnSetting];
-    [btnSetting release];
     
     UIButton *btnSubScribe = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnSubScribe setBackgroundImage:[UIImage imageNamed:@"home_button_subscribe"] forState:UIControlStateNormal];
     [btnSubScribe setFrame:CGRectMake(0, 0, 40, 40)];
     [btnSubScribe setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-1*50)];
     [_rightSettingView addSubview:btnSubScribe];
-    [btnSubScribe release];
     
     _itemDataArray = [[NSMutableArray alloc] initWithArray:[KKConfiguration getSubscriptionData]];
     _itemArray = [[NSMutableArray alloc] init];
