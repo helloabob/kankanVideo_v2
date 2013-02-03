@@ -11,6 +11,7 @@
 
 typedef enum {
     ItemNormalStatus = 0,
+    ItemDeletableStatus,
     ItemRemovableStatus,
 } ItemStatus;
 

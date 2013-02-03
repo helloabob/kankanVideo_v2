@@ -19,16 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [KKConfiguration defaultConfiguration];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
     KKHomeViewController *homeViewController = [[KKHomeViewController alloc] init];
-    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    
     [_window setRootViewController:nav];
-    
     [self.window makeKeyAndVisible];
     
     return YES;

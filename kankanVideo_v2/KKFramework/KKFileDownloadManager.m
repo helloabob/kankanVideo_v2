@@ -9,26 +9,31 @@
 #import "KKFileDownloadManager.h"
 
 @interface KKFileDownloadManager() {
-    NSString *_fileUrl;                     //下载文件url地址
-    NSMutableData *_fileData;               //下载数据
-    BOOL _shouldExit;                       //线程关闭开关
-    NSURLConnection *_conn;                 //连接变量
+    NSString            *_fileUrl;                     //下载文件url地址
+    NSMutableData       *_fileData;                    //下载数据
+    BOOL                _shouldExit;                   //线程关闭开关
+    NSURLConnection     *_conn;                        //连接变量
+    BOOL                _readCacheFlag;                //是否尝试读取cache
+    BOOL                _saveCacheFlag;                //数据是否保存到cache
+    //downloadDidFinished   _downloadDidFinishedBlock;
 }
 
 @end
 
 @implementation KKFileDownloadManager
-@synthesize delegate;
+//@synthesize delegate = _delegate;
+@synthesize downloadDidFinishedBlock = _downloadDidFinishedBlock;
 
 - (void)dealloc {
-    [_fileData release];
-    delegate = nil;
+    [_fileUrl release];
+    if (_fileData) {
+        [_fileData release];
+    }
     [super dealloc];
 }
 
 - (id)init {
     self = [super init];
-    _fileData = [[NSMutableData alloc] init];
     return  self;
 }
 
@@ -47,42 +52,79 @@
 #pragma NSConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    if (!_fileData) {
+        _fileData = [[NSMutableData alloc] init];
+    }
     [_fileData appendData:data];
+}
+
+- (void)callback {
+    if (_downloadDidFinishedBlock) {
+        _downloadDidFinishedBlock(_fileData);
+    }
+    [_downloadDidFinishedBlock release];
+    _downloadDidFinishedBlock = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [connection release];
     connection = nil;
     _shouldExit = YES;
-    [delegate fileDidDownloadSuccessfully:self withData:_fileData];
+    //[_delegate fileDidDownloadSuccessfully:self withData:_fileData];
+    if (_saveCacheFlag) {
+        [KKFileManager writeToFile:kDownloadCachePath(_fileUrl) ofType:CachePath withData:_fileData];
+    }
+    [self callback];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [connection release];
     connection = nil;
     _shouldExit = YES;
-    [delegate fileDidFailed:self withError:error];
+    [self callback];
+    //[_delegate fileDidFailed:self withError:error];
 }
 
 #pragma end
 
-- (void)downloadFile:(NSString *)url {
+- (void)downloadFile {
+    if (_readCacheFlag) {
+        if ([KKFileManager fileExists:kDownloadCachePath(_fileUrl) ofType:CachePath]) {
+            _fileData = [[NSMutableData alloc] initWithData:[KKFileManager fileDataWithPath:kDownloadCachePath(_fileUrl) ofType:CachePath]];
+            return [self callback];
+        }
+    }
     if ([Reachability reachabilityForInternetConnection]) {
-        _fileUrl = url;
         [NSThread detachNewThreadSelector:@selector(downloadThread) toTarget:self withObject:nil];
     } else {
-        NSError *err = [NSError errorWithDomain:@"KKFileDownloadManager" code:404 userInfo:nil];
-        [delegate fileDidFailed:self withError:err];
+        //NSError *err = [NSError errorWithDomain:@"KKFileDownloadManager" code:404 userInfo:nil];
+        [self callback];
+        //[_delegate fileDidFailed:self withError:err];
     }
 }
 
-- (void)stopDownload {
-    _shouldExit = YES;
-    if (_conn) {
-        [_conn cancel];
-        [_conn release];
-        _conn = nil;
-    }
+- (void)downloadFile:(NSString *)url
+           readCache:(BOOL)readcache
+           saveCache:(BOOL)savecache
+          completion:(downloadDidFinished)completion {
+    _fileUrl = [url retain];
+    //NSLog(@"%@",_fileUrl);
+    _readCacheFlag = readcache;
+    _saveCacheFlag = savecache;
+    self.downloadDidFinishedBlock = completion;
+    [self downloadFile];
 }
+
+//- (void)stopDownload {
+//    if (_downloadDidFinishedBlock) {
+//        _downloadDidFinishedBlock = nil;
+//    }
+//    _shouldExit = YES;
+//    if (_conn) {
+//        [_conn cancel];
+//        [_conn release];
+//        _conn = nil;
+//    }
+//}
 
 @end

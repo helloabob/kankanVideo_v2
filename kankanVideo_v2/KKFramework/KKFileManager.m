@@ -11,16 +11,16 @@
 @implementation KKFileManager
 
 + (void)writeToFile:(NSString *)filename ofType:(PathType)pathType withData:(NSData *)filedata {
-    [filedata writeToFile:[KKFileManager filepathforFilename:filename forType:pathType] atomically:YES];
+    [filedata writeToFile:[self filepathforFilename:filename forType:pathType] atomically:YES];
 }
 
 + (BOOL)fileExists:(NSString *)filename ofType:(PathType)pathType {
     NSFileManager *fm = [NSFileManager defaultManager];
-    return [fm fileExistsAtPath:[KKFileManager filepathforFilename:filename forType:pathType]];
+    return [fm fileExistsAtPath:[self filepathforFilename:filename forType:pathType]];
 }
 
 + (NSData *)fileDataWithPath:(NSString *)filename ofType:(PathType)pathType {
-    return [NSData dataWithContentsOfFile:[KKFileManager filepathforFilename:filename forType:pathType]];
+    return [NSData dataWithContentsOfFile:[self filepathforFilename:filename forType:pathType]];
 }
 
 + (NSString *)filepathforFilename:(NSString *)filename forType:(PathType)pathType {
@@ -33,6 +33,7 @@
         array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     }
     NSString *filepath = [array objectAtIndex:0];
+    //NSLog(@"%@",filepath);
     return [filepath stringByAppendingPathComponent:filename];
 }
 

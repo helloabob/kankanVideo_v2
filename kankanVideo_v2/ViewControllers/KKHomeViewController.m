@@ -12,6 +12,7 @@
 
 #define SCENE_FRAME                 CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
 #define RIGHT_SETTING_VIEW_FRAME    CGRectMake(260,0,60,self.view.frame.size.height)
+#define ITEM_FRAME                  CGRectMake(0,0,120,90)
 
 @interface KKHomeViewController () {
     KKSceneView             *_sceneView;                   //封面界面
@@ -25,12 +26,13 @@
 
 @implementation KKHomeViewController
 
+//計算元素的坐標
 - (CGRect)calculateRect:(u_int32_t)index {
     const int numPerPage = iPhone5?10:8;
     u_int32_t x = 10;
     u_int32_t y = 20;
     int pages = index / numPerPage;
-    x = x + ((index%2==1)?130:0 + pages * 320);
+    x = x + (((index%2==1)?130:0) + pages * 320);
     y = y + (index - pages * numPerPage) / 2 * 100;
     return CGRectMake(x, y, 120, 90);
 }
@@ -44,7 +46,12 @@
         }
     }];
     const int numPerPage = iPhone5?10:8;
-    int pages = _itemArray.count / numPerPage;
+    int pages;
+    if (_itemArray.count == 0) {
+        pages = 0;
+    } else {
+        pages = (_itemArray.count%numPerPage==0)?(_itemArray.count / numPerPage - 1):(_itemArray.count / numPerPage);
+    }
     _contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width*(pages+1),self.view.frame.size.height);
 }
 
@@ -54,6 +61,10 @@
     [super dealloc];
 }
 
+- (void)timeout {
+    NSLog(@"===:%d",[_sceneView retainCount]);
+}
+
 - (void)loadView {
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -61,6 +72,11 @@
     _sceneView = [[KKSceneView alloc] initWithFrame:SCENE_FRAME];
     [self.view addSubview:_sceneView];
     [_sceneView release];
+    
+    //[NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timeout) userInfo:nil repeats:YES];
+    
+    
+    //NSLog(@"%d",[_sceneView retainCount]);
     
     _contentScrollView = [[UIScrollView alloc] initWithFrame:SCENE_FRAME];
     [_contentScrollView setPagingEnabled:YES];
@@ -76,13 +92,14 @@
     NSArray *arr = [NSArray arrayWithObject:@"测试"];
     
     for (u_int32_t i = 0; i < 10; i ++) {
-        KKHomeItemView *itemView = [[KKHomeItemView alloc] initWithFrame:[self calculateRect:i] withParam:arr];
+        KKHomeItemView *itemView = [[KKHomeItemView alloc] initWithFrame:ITEM_FRAME withParam:arr];
         [_contentScrollView addSubview:itemView];
         [itemView setDelegate:self];
         [itemView release];
         
         [_itemArray addObject:itemView];
     }
+    
     [self.view setClipsToBounds:YES];
     [self.view bringSubviewToFront:_sceneView];
     
@@ -103,7 +120,7 @@
 }
 
 - (void)itemLongPressed {
-    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemRemovableStatus]];
+    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemDeletableStatus]];
     UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviseItemNormal:)];
     [_rightSettingView addGestureRecognizer:tapGest];
     [tapGest release];

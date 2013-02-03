@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKSceneView : UIView<KKFileDownloadManagerDelegate>
+@interface KKSceneView : UIView
 
 @end

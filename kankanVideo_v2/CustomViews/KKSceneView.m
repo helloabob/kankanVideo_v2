@@ -18,6 +18,7 @@
     UIButton *_btnArrow;        //右箭头按钮
     UIImageView *_imageBack;    //背景图片
     KKFileDownloadManager *_downloadManager;
+    KKFileDownloadManager *_imageDownloadManager;
 }
 
 @end
@@ -26,6 +27,7 @@
 
 
 - (void)dealloc {
+    [_imageDownloadManager release];
     [_downloadManager release];
     [super dealloc];
 }
@@ -37,19 +39,24 @@
         // Initialization code
     }
     [self setBackgroundColor:[UIColor blackColor]];
-    
-    if ([KKFileManager fileExists:HOME_IMAGE_PATH ofType:LibraryPath] == YES) {
-        _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[KKFileManager fileDataWithPath:HOME_IMAGE_PATH ofType:LibraryPath]]];
-    } else {
-        _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:DEFAULT_HOME_IMAGE_NAME]];
+
+    _imageBack = [[UIImageView alloc] initWithFrame:frame];
         _downloadManager = [[KKFileDownloadManager alloc] init];
-        [_downloadManager setDelegate:self];
-        [_downloadManager downloadFile:@"http://static.statickksmg.com/image/2013/01/28/d68b73f99f409de897a62d21f31a6d66.jpg"];
-    }
-    
-    [_imageBack release];
-    _imageBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default"]];
-    
+        [_downloadManager downloadFile:kHomeBigImageUrl
+                             readCache:YES
+                             saveCache:YES
+                            completion:^(NSData *xmlData){
+                                if (xmlData) {
+                                    NSMutableArray *array = [KKXMLParser parseXML:xmlData withKeys:[NSArray arrayWithObject:@"titlepic"]];
+                                    _imageDownloadManager = [[KKFileDownloadManager alloc] init];
+                                    [_imageDownloadManager downloadFile:[[array objectAtIndex:[KKConfiguration getHomeViewBackgroundIndex]] objectForKey:@"titlepic"]
+                                           readCache:YES
+                                           saveCache:YES
+                                          completion:^(NSData *imageData){
+                                              _imageBack.image = [UIImage imageWithData:imageData];
+                                    }];
+                                }
+                            }];
     [self addSubview:_imageBack];
     [_imageBack release];
     
@@ -64,23 +71,14 @@
     [self addSubview:imageView];
     [imageView release];
     
+    
     return self;
-}
-
-- (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData {
-    NSLog(@"fileDidDownloadSuccessfully");
-    [KKFileManager writeToFile:HOME_IMAGE_PATH ofType:LibraryPath withData:fileData];
-}
-
-- (void)fileDidFailed:(KKFileDownloadManager *)downloadManager withError:(NSError *)error {
-    NSLog(@"fileDidFailed");
 }
 
 - (void)btnTapped:(UIControlEvents *)sender {
     [UIView animateWithDuration:1.0f animations:^{
         [self setAlpha:0];
     }completion:^(BOOL finished){
-        [_downloadManager stopDownload];
         [self removeFromSuperview];
     }];
 }

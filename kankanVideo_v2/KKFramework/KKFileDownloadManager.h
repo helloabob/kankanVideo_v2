@@ -7,20 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-@class KKFileDownloadManager;
+//@class KKFileDownloadManager;
 
-
-@protocol KKFileDownloadManagerDelegate
+/*@protocol KKFileDownloadManagerDelegate
 @required
 - (void)fileDidDownloadSuccessfully:(KKFileDownloadManager *)downloadManager withData:(NSData *)fileData;
 - (void)fileDidFailed:(KKFileDownloadManager *)downloadManager withError:(NSError *)error;
-
-@end
+@end*/
 
 @interface KKFileDownloadManager : NSObject<NSURLConnectionDataDelegate>
 
-@property(nonatomic,assign)id<KKFileDownloadManagerDelegate>delegate;
-- (void)downloadFile:(NSString *)url;
-- (void)stopDownload;
+typedef void (^downloadDidFinished)(NSData *fileData);
+
+@property(nonatomic,copy) downloadDidFinished downloadDidFinishedBlock;
+
+//@property(nonatomic,assign)id<KKFileDownloadManagerDelegate>delegate;
+//- (void)downloadFile:(NSString *)url;
+- (void)downloadFile:(NSString *)url
+           readCache:(BOOL)readcache
+           saveCache:(BOOL)savecache
+          completion:(downloadDidFinished)completion;
+
+//- (void)stopDownload;
 
 @end

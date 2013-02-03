@@ -25,7 +25,7 @@
 		9831DCD816B82C8D005CF59D /* kk_enter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD416B82C8D005CF59D /* kk_enter@2x.png */; };
 		9831DCD916B82C8D005CF59D /* kk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD516B82C8D005CF59D /* kk_logo.png */; };
 		9831DCDA16B82C8D005CF59D /* kk_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9831DCD616B82C8D005CF59D /* kk_logo@2x.png */; };
-		9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDC16B83D22005CF59D /* KKHomeItemView.m */; };
+		9831DCDD16B83D22005CF59D /* KKhomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDC16B83D22005CF59D /* KKhomeItemView.m */; };
 		9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCDF16B8C947005CF59D /* KKListViewController.m */; };
 		9831DCE816B8FACF005CF59D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCE716B8FACF005CF59D /* Reachability.m */; };
 		9831DCEC16B8FD21005CF59D /* KKFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */; };
@@ -33,6 +33,15 @@
 		985071D916B956140096CCF4 /* KKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985071D816B956140096CCF4 /* KKFileManager.m */; };
 		985071DD16BA21AC0096CCF4 /* itemclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DB16BA21AC0096CCF4 /* itemclose.png */; };
 		985071DE16BA21AC0096CCF4 /* itemclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DC16BA21AC0096CCF4 /* itemclose@2x.png */; };
+		987D9B4316BC18160056AD21 /* KKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4216BC18160056AD21 /* KKConfiguration.m */; };
+		987D9B4616BC30C70056AD21 /* KKXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4516BC30C70056AD21 /* KKXMLParser.m */; };
+		987D9B4816BC32D70056AD21 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D9B4716BC32D70056AD21 /* libxml2.dylib */; };
+		987D9B5116BC35E60056AD21 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4C16BC35E60056AD21 /* DDXMLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		987D9B5216BC35E60056AD21 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4E16BC35E60056AD21 /* DDXMLElement.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		987D9B5316BC35E60056AD21 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B5016BC35E60056AD21 /* DDXMLNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		987D9B5816BC363A0056AD21 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B5716BC363A0056AD21 /* NSString+DDXML.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		987D9B5B16BCBF7C0056AD21 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B5A16BCBF7B0056AD21 /* NSString+MD5.m */; };
+		98AB48E216BD8DF800453B22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AB48E116BD8DF800453B22 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +71,7 @@
 		9831DCD516B82C8D005CF59D /* kk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kk_logo.png; path = images/home/kk_logo.png; sourceTree = "<group>"; };
 		9831DCD616B82C8D005CF59D /* kk_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "kk_logo@2x.png"; path = "images/home/kk_logo@2x.png"; sourceTree = "<group>"; };
 		9831DCDB16B83D22005CF59D /* KKHomeItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKHomeItemView.h; path = CustomViews/KKHomeItemView.h; sourceTree = "<group>"; };
-		9831DCDC16B83D22005CF59D /* KKHomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKHomeItemView.m; path = CustomViews/KKHomeItemView.m; sourceTree = "<group>"; };
+		9831DCDC16B83D22005CF59D /* KKhomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKhomeItemView.m; path = CustomViews/KKhomeItemView.m; sourceTree = "<group>"; };
 		9831DCDE16B8C947005CF59D /* KKListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKListViewController.h; path = ViewControllers/KKListViewController.h; sourceTree = "<group>"; };
 		9831DCDF16B8C947005CF59D /* KKListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKListViewController.m; path = ViewControllers/KKListViewController.m; sourceTree = "<group>"; };
 		9831DCE616B8FACF005CF59D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ThirdParty/Reachability.h; sourceTree = "<group>"; };
@@ -74,6 +83,24 @@
 		985071D816B956140096CCF4 /* KKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileManager.m; path = KKFramework/KKFileManager.m; sourceTree = "<group>"; };
 		985071DB16BA21AC0096CCF4 /* itemclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemclose.png; path = images/home/itemclose.png; sourceTree = "<group>"; };
 		985071DC16BA21AC0096CCF4 /* itemclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemclose@2x.png"; path = "images/home/itemclose@2x.png"; sourceTree = "<group>"; };
+		987D9B4116BC18160056AD21 /* KKConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKConfiguration.h; path = KKFramework/KKConfiguration.h; sourceTree = "<group>"; };
+		987D9B4216BC18160056AD21 /* KKConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKConfiguration.m; path = KKFramework/KKConfiguration.m; sourceTree = "<group>"; };
+		987D9B4416BC30C70056AD21 /* KKXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKXMLParser.h; path = KKFramework/KKXMLParser.h; sourceTree = "<group>"; };
+		987D9B4516BC30C70056AD21 /* KKXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKXMLParser.m; path = KKFramework/KKXMLParser.m; sourceTree = "<group>"; };
+		987D9B4716BC32D70056AD21 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		987D9B4A16BC35E60056AD21 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXML.h; path = ThirdParty/DDXML/DDXML.h; sourceTree = "<group>"; };
+		987D9B4B16BC35E60056AD21 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLDocument.h; path = ThirdParty/DDXML/DDXMLDocument.h; sourceTree = "<group>"; };
+		987D9B4C16BC35E60056AD21 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLDocument.m; path = ThirdParty/DDXML/DDXMLDocument.m; sourceTree = "<group>"; };
+		987D9B4D16BC35E60056AD21 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLElement.h; path = ThirdParty/DDXML/DDXMLElement.h; sourceTree = "<group>"; };
+		987D9B4E16BC35E60056AD21 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLElement.m; path = ThirdParty/DDXML/DDXMLElement.m; sourceTree = "<group>"; };
+		987D9B4F16BC35E60056AD21 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLNode.h; path = ThirdParty/DDXML/DDXMLNode.h; sourceTree = "<group>"; };
+		987D9B5016BC35E60056AD21 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLNode.m; path = ThirdParty/DDXML/DDXMLNode.m; sourceTree = "<group>"; };
+		987D9B5516BC36150056AD21 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLPrivate.h; path = ThirdParty/DDXML/Private/DDXMLPrivate.h; sourceTree = "<group>"; };
+		987D9B5616BC363A0056AD21 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+DDXML.h"; path = "ThirdParty/DDXML/NSString+DDXML.h"; sourceTree = "<group>"; };
+		987D9B5716BC363A0056AD21 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+DDXML.m"; path = "ThirdParty/DDXML/NSString+DDXML.m"; sourceTree = "<group>"; };
+		987D9B5916BCBF7B0056AD21 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "KKFramework/NSString+MD5.h"; sourceTree = "<group>"; };
+		987D9B5A16BCBF7B0056AD21 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "KKFramework/NSString+MD5.m"; sourceTree = "<group>"; };
+		98AB48E116BD8DF800453B22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98AB48E216BD8DF800453B22 /* QuartzCore.framework in Frameworks */,
+				987D9B4816BC32D70056AD21 /* libxml2.dylib in Frameworks */,
 				9831DCF016B90294005CF59D /* SystemConfiguration.framework in Frameworks */,
 				9831DC9916B80BDA005CF59D /* UIKit.framework in Frameworks */,
 				9831DC9B16B80BDA005CF59D /* Foundation.framework in Frameworks */,
@@ -94,6 +123,7 @@
 		9831DC8916B80BDA005CF59D = {
 			isa = PBXGroup;
 			children = (
+				98AB48E116BD8DF800453B22 /* QuartzCore.framework */,
 				9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */,
 				9831DC9716B80BDA005CF59D /* Frameworks */,
 				9831DC9516B80BDA005CF59D /* Products */,
@@ -111,6 +141,7 @@
 		9831DC9716B80BDA005CF59D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				987D9B4716BC32D70056AD21 /* libxml2.dylib */,
 				9831DCEF16B90294005CF59D /* SystemConfiguration.framework */,
 				9831DC9816B80BDA005CF59D /* UIKit.framework */,
 				9831DC9A16B80BDA005CF59D /* Foundation.framework */,
@@ -166,7 +197,7 @@
 				9831DCBA16B80FD1005CF59D /* KKSceneView.h */,
 				9831DCBB16B80FD1005CF59D /* KKSceneView.m */,
 				9831DCDB16B83D22005CF59D /* KKHomeItemView.h */,
-				9831DCDC16B83D22005CF59D /* KKHomeItemView.m */,
+				9831DCDC16B83D22005CF59D /* KKhomeItemView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -198,6 +229,7 @@
 		9831DCE516B8FA97005CF59D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				987D9B4916BC35AB0056AD21 /* DDXML */,
 				9831DCE616B8FACF005CF59D /* Reachability.h */,
 				9831DCE716B8FACF005CF59D /* Reachability.m */,
 			);
@@ -211,8 +243,39 @@
 				9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */,
 				985071D716B956140096CCF4 /* KKFileManager.h */,
 				985071D816B956140096CCF4 /* KKFileManager.m */,
+				987D9B4116BC18160056AD21 /* KKConfiguration.h */,
+				987D9B4216BC18160056AD21 /* KKConfiguration.m */,
+				987D9B4416BC30C70056AD21 /* KKXMLParser.h */,
+				987D9B4516BC30C70056AD21 /* KKXMLParser.m */,
+				987D9B5916BCBF7B0056AD21 /* NSString+MD5.h */,
+				987D9B5A16BCBF7B0056AD21 /* NSString+MD5.m */,
 			);
 			name = KKFramework;
+			sourceTree = "<group>";
+		};
+		987D9B4916BC35AB0056AD21 /* DDXML */ = {
+			isa = PBXGroup;
+			children = (
+				987D9B5616BC363A0056AD21 /* NSString+DDXML.h */,
+				987D9B5716BC363A0056AD21 /* NSString+DDXML.m */,
+				987D9B5416BC360B0056AD21 /* private */,
+				987D9B4A16BC35E60056AD21 /* DDXML.h */,
+				987D9B4B16BC35E60056AD21 /* DDXMLDocument.h */,
+				987D9B4C16BC35E60056AD21 /* DDXMLDocument.m */,
+				987D9B4D16BC35E60056AD21 /* DDXMLElement.h */,
+				987D9B4E16BC35E60056AD21 /* DDXMLElement.m */,
+				987D9B4F16BC35E60056AD21 /* DDXMLNode.h */,
+				987D9B5016BC35E60056AD21 /* DDXMLNode.m */,
+			);
+			name = DDXML;
+			sourceTree = "<group>";
+		};
+		987D9B5416BC360B0056AD21 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				987D9B5516BC36150056AD21 /* DDXMLPrivate.h */,
+			);
+			name = private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,11 +357,18 @@
 				9831DCA916B80BDA005CF59D /* KKAppDelegate.m in Sources */,
 				9831DCB916B80F74005CF59D /* KKHomeViewController.m in Sources */,
 				9831DCBC16B80FD1005CF59D /* KKSceneView.m in Sources */,
-				9831DCDD16B83D22005CF59D /* KKHomeItemView.m in Sources */,
+				9831DCDD16B83D22005CF59D /* KKhomeItemView.m in Sources */,
 				9831DCE016B8C948005CF59D /* KKListViewController.m in Sources */,
 				9831DCE816B8FACF005CF59D /* Reachability.m in Sources */,
 				9831DCEC16B8FD21005CF59D /* KKFileDownloadManager.m in Sources */,
 				985071D916B956140096CCF4 /* KKFileManager.m in Sources */,
+				987D9B4316BC18160056AD21 /* KKConfiguration.m in Sources */,
+				987D9B4616BC30C70056AD21 /* KKXMLParser.m in Sources */,
+				987D9B5116BC35E60056AD21 /* DDXMLDocument.m in Sources */,
+				987D9B5216BC35E60056AD21 /* DDXMLElement.m in Sources */,
+				987D9B5316BC35E60056AD21 /* DDXMLNode.m in Sources */,
+				987D9B5816BC363A0056AD21 /* NSString+DDXML.m in Sources */,
+				987D9B5B16BCBF7C0056AD21 /* NSString+MD5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,8 +439,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -381,8 +453,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
