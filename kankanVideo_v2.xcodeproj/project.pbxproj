@@ -33,6 +33,14 @@
 		985071D916B956140096CCF4 /* KKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985071D816B956140096CCF4 /* KKFileManager.m */; };
 		985071DD16BA21AC0096CCF4 /* itemclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DB16BA21AC0096CCF4 /* itemclose.png */; };
 		985071DE16BA21AC0096CCF4 /* itemclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DC16BA21AC0096CCF4 /* itemclose@2x.png */; };
+		986C58F516BFF53100F6AD52 /* l1.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58ED16BFF53100F6AD52 /* l1.png */; };
+		986C58F616BFF53100F6AD52 /* l2.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58EE16BFF53100F6AD52 /* l2.png */; };
+		986C58F716BFF53100F6AD52 /* l3.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58EF16BFF53100F6AD52 /* l3.png */; };
+		986C58F816BFF53100F6AD52 /* l4.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58F016BFF53100F6AD52 /* l4.png */; };
+		986C58F916BFF53100F6AD52 /* l5.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58F116BFF53100F6AD52 /* l5.png */; };
+		986C58FA16BFF53100F6AD52 /* l6.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58F216BFF53100F6AD52 /* l6.png */; };
+		986C58FB16BFF53100F6AD52 /* l7.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58F316BFF53100F6AD52 /* l7.png */; };
+		986C58FC16BFF53100F6AD52 /* l8.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58F416BFF53100F6AD52 /* l8.png */; };
 		987D9B4316BC18160056AD21 /* KKConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4216BC18160056AD21 /* KKConfiguration.m */; };
 		987D9B4616BC30C70056AD21 /* KKXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 987D9B4516BC30C70056AD21 /* KKXMLParser.m */; };
 		987D9B4816BC32D70056AD21 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 987D9B4716BC32D70056AD21 /* libxml2.dylib */; };
@@ -92,6 +100,14 @@
 		985071D816B956140096CCF4 /* KKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileManager.m; path = KKFramework/KKFileManager.m; sourceTree = "<group>"; };
 		985071DB16BA21AC0096CCF4 /* itemclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemclose.png; path = images/home/itemclose.png; sourceTree = "<group>"; };
 		985071DC16BA21AC0096CCF4 /* itemclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemclose@2x.png"; path = "images/home/itemclose@2x.png"; sourceTree = "<group>"; };
+		986C58ED16BFF53100F6AD52 /* l1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l1.png; path = images/common/l1.png; sourceTree = "<group>"; };
+		986C58EE16BFF53100F6AD52 /* l2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l2.png; path = images/common/l2.png; sourceTree = "<group>"; };
+		986C58EF16BFF53100F6AD52 /* l3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l3.png; path = images/common/l3.png; sourceTree = "<group>"; };
+		986C58F016BFF53100F6AD52 /* l4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l4.png; path = images/common/l4.png; sourceTree = "<group>"; };
+		986C58F116BFF53100F6AD52 /* l5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l5.png; path = images/common/l5.png; sourceTree = "<group>"; };
+		986C58F216BFF53100F6AD52 /* l6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l6.png; path = images/common/l6.png; sourceTree = "<group>"; };
+		986C58F316BFF53100F6AD52 /* l7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l7.png; path = images/common/l7.png; sourceTree = "<group>"; };
+		986C58F416BFF53100F6AD52 /* l8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l8.png; path = images/common/l8.png; sourceTree = "<group>"; };
 		987D9B4116BC18160056AD21 /* KKConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKConfiguration.h; path = KKFramework/KKConfiguration.h; sourceTree = "<group>"; };
 		987D9B4216BC18160056AD21 /* KKConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKConfiguration.m; path = KKFramework/KKConfiguration.m; sourceTree = "<group>"; };
 		987D9B4416BC30C70056AD21 /* KKXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKXMLParser.h; path = KKFramework/KKXMLParser.h; sourceTree = "<group>"; };
@@ -223,6 +239,7 @@
 		9831DCC716B82947005CF59D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				986C58EC16BFF52800F6AD52 /* common */,
 				98AB48F116BEBE3400453B22 /* config */,
 				9831DCC816B82950005CF59D /* home */,
 			);
@@ -277,6 +294,21 @@
 				987D9B5A16BCBF7B0056AD21 /* NSString+MD5.m */,
 			);
 			name = KKFramework;
+			sourceTree = "<group>";
+		};
+		986C58EC16BFF52800F6AD52 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				986C58ED16BFF53100F6AD52 /* l1.png */,
+				986C58EE16BFF53100F6AD52 /* l2.png */,
+				986C58EF16BFF53100F6AD52 /* l3.png */,
+				986C58F016BFF53100F6AD52 /* l4.png */,
+				986C58F116BFF53100F6AD52 /* l5.png */,
+				986C58F216BFF53100F6AD52 /* l6.png */,
+				986C58F316BFF53100F6AD52 /* l7.png */,
+				986C58F416BFF53100F6AD52 /* l8.png */,
+			);
+			name = common;
 			sourceTree = "<group>";
 		};
 		987D9B4916BC35AB0056AD21 /* DDXML */ = {
@@ -387,6 +419,14 @@
 				98AB48F016BEA14300453B22 /* home_button_subscribe@2x.png in Resources */,
 				98AB48F416BEBF6C00453B22 /* icon.png in Resources */,
 				98AB48F516BEBF6C00453B22 /* launch.png in Resources */,
+				986C58F516BFF53100F6AD52 /* l1.png in Resources */,
+				986C58F616BFF53100F6AD52 /* l2.png in Resources */,
+				986C58F716BFF53100F6AD52 /* l3.png in Resources */,
+				986C58F816BFF53100F6AD52 /* l4.png in Resources */,
+				986C58F916BFF53100F6AD52 /* l5.png in Resources */,
+				986C58FA16BFF53100F6AD52 /* l6.png in Resources */,
+				986C58FB16BFF53100F6AD52 /* l7.png in Resources */,
+				986C58FC16BFF53100F6AD52 /* l8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

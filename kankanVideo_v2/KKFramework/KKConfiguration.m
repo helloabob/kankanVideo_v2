@@ -33,6 +33,11 @@
     //
 }
 
++ (void)setSubscriptionData:(NSArray *)array {
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:kSubscriptionKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (NSArray *)getSubscriptionData {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSubscriptionKey];
 }

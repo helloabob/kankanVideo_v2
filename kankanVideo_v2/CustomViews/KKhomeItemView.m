@@ -24,8 +24,9 @@
     //BOOL _pointIsHere;                          //当前长按手势在此对象
     CGAffineTransform oldTransform;             //item初始transform
     UIImageView *_itemBackImage;                 //item背景图片
-    BOOL _moveBegan;
-    KKFileDownloadManager *_imageDownloader;
+    BOOL _moveBegan;                            //是否可以移动item标志
+    KKFileDownloadManager *_imageDownloader;    //加载图片加载器
+    UIImageView *_imageViewLoading;             //加载时loading效果
 }
 
 @end
@@ -57,10 +58,28 @@
     //self.layer.cornerRadius = 10.0f;
     //self.layer.masksToBounds = YES;
     
+    [self setBackgroundColor:[UIColor whiteColor]];
+    
+    _imageViewLoading = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-48, frame.size.height-48, 48, 48)];
+    [_imageViewLoading setAnimationImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"l1"],
+                                          [UIImage imageNamed:@"l2"],
+                                          [UIImage imageNamed:@"l3"],
+                                          [UIImage imageNamed:@"l4"],
+                                          [UIImage imageNamed:@"l5"],
+                                          [UIImage imageNamed:@"l6"],
+                                          [UIImage imageNamed:@"l7"],
+                                           [UIImage imageNamed:@"l8"],nil]];
+    [_imageViewLoading setAnimationRepeatCount:0];
+    [_imageViewLoading setAnimationDuration:0.8f];
+    [_imageViewLoading startAnimating];
+    [self addSubview:_imageViewLoading];
+    [_imageViewLoading release];
+    
+    
     _contentView = [[UIView alloc] initWithFrame:frame];
     [self addSubview:_contentView];
     [_contentView release];
-    [_contentView setBackgroundColor:[UIColor grayColor]];
+    [_contentView setBackgroundColor:[UIColor whiteColor]];
     //_contentView.layer.cornerRadius = 10.0f;
     //_contentView.layer.masksToBounds = YES;
     //_contentView.layer.borderColor = [[UIColor redColor] CGColor];
@@ -79,6 +98,8 @@
                          saveCache:YES
                         completion:^(NSData *imageData){
                             _itemBackImage.image = [UIImage imageWithData:imageData];
+                            [_imageViewLoading stopAnimating];
+                            [_imageViewLoading removeFromSuperview];
         
     }];
     [_contentView addSubview:_itemBackImage];
@@ -104,7 +125,7 @@
     _tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [_tapGest setDelegate:self];
     //[_tapGest setCancelsTouchesInView:NO];
-    [self addGestureRecognizer:_tapGest];
+    [_contentView addGestureRecognizer:_tapGest];
     
     _longGest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(viewLongPressed:)];
     [_longGest setDelegate:self];
@@ -135,21 +156,21 @@
     return YES;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    
-    if (gestureRecognizer == _tapGest) {
-        if (_currentItemStatus == ItemNormalStatus) {
-            return YES;
-        } else {
-            if ([gestureRecognizer locationInView:self].x<_btnClose.frame.size.width && [gestureRecognizer locationInView:self].y<_btnClose.frame.size.height) {
-                return NO;
-            } else {
-                return YES;
-            }
-        }
-    }
-    return YES;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+//    
+//    if (gestureRecognizer == _tapGest) {
+//        if (_currentItemStatus == ItemNormalStatus) {
+//            return YES;
+//        } else {
+//            if ([gestureRecognizer locationInView:self].x<_btnClose.frame.size.width && [gestureRecognizer locationInView:self].y<_btnClose.frame.size.height) {
+//                return NO;
+//            } else {
+//                return YES;
+//            }
+//        }
+//    }
+//    return YES;
+//}
 
 - (void)closeButtonTapped {
     [self removeFromSuperview];

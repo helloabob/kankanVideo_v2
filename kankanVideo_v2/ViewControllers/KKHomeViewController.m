@@ -150,28 +150,16 @@
                                                 NSMutableDictionary *dict = [array objectAtIndex:i];
                                                 if ([[dict objectForKey:kXMLIsGood] intValue] > 0 || [[dict objectForKey:kXMLFirstTitle] intValue] > 0) {
                                                     [dict setObject:[NSNumber numberWithInt:i] forKey:kXMLIndex];
-                                                    //[_itemArray addObject:dict];
+                                                    
                                                     [_itemDataArray addObject:dict];
                                                 }
                                             }
-                                            if (_itemArray.count > 0) {
+                                            if (_itemDataArray.count > 0) {
                                                 [self tidyItems];
                                             }
                                         }
         }];
     }
-    
-    
-//    for (u_int32_t i = 0; i < 10; i ++) {
-//        NSArray *arr = [NSArray arrayWithObject:[NSString stringWithFormat:@"达人秀%d",i]];
-//        KKHomeItemView *itemView = [[KKHomeItemView alloc] initWithFrame:ITEM_FRAME withParam:arr];
-//        [_contentScrollView addSubview:itemView];
-//        [itemView setDelegate:self];
-//        [itemView setIndex:i];
-//        [itemView release];
-//        
-//        [_itemArray addObject:itemView];
-//    }
     
     [self.view setClipsToBounds:YES];
     [self.view bringSubviewToFront:_sceneView];
@@ -189,18 +177,18 @@
     if (!_listViewController) {
         _listViewController = [[KKListViewController alloc] init]; 
     }
-    //if (itemView.currentItemStatus == ItemNormalStatus) {
+    if (itemView.currentItemStatus == ItemNormalStatus) {
         [self.navigationController pushViewController:_listViewController animated:YES];
-    //} else {
-    //    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
-    //}
+    } else {
+        [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
+    }
 }
 
 - (void)itemLongPressed:(KKHomeItemView *)itemView {
     [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemDeletableStatus]];
-    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviseItemNormal:)];
-    [_rightSettingView addGestureRecognizer:tapGest];
-    [tapGest release];
+//    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reviseItemNormal:)];
+//    [_rightSettingView addGestureRecognizer:tapGest];
+//    [tapGest release];
     [_contentScrollView bringSubviewToFront:itemView];
 }
 
