@@ -30,4 +30,6 @@ typedef void (^downloadDidFinished)(NSData *fileData);
 
 //- (void)stopDownload;
 
++ (NSString *)cacheFilePath:(NSString *)url;
+
 @end

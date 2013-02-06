@@ -115,6 +115,7 @@
     [btnRefresh setBackgroundImage:[UIImage imageNamed:@"home_button_refresh.png"] forState:UIControlStateNormal];
     [btnRefresh setFrame:CGRectMake(0, 0, 40, 40)];
     [btnRefresh setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-4*50)];
+    [btnRefresh addTarget:self action:@selector(btnRefreshTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_rightSettingView addSubview:btnRefresh];
     
     UIButton *btnSetting = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -169,6 +170,14 @@
     [self tidyItems];
 }
 
+#pragma UIEvent in right setting
+
+- (void)btnRefreshTapped:(UIEvent *)sender {
+    [KKFileManager deleteAllCacheData];
+}
+
+#pragma end
+
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -180,6 +189,7 @@
         if (!_listViewController) {
             _listViewController = [[KKListViewController alloc] init];
         }
+        _listViewController.title = [itemView.itemData objectForKey:kXMLTitle];
         _listViewController.channelId = [itemView.itemData objectForKey:kXMLClassId];
         [self.navigationController pushViewController:_listViewController animated:YES];
     } else {

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WBRefreshTableHeaderView.h"
+#import "KKListTableViewCell.h"
 
-@interface KKListViewController : UIViewController
+@interface KKListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,WBRefreshTableHeaderViewDelegate>
 
 @property(nonatomic,retain) NSString *channelId;
 

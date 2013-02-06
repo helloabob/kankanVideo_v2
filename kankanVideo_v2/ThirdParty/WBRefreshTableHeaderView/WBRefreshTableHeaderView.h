@@ -14,11 +14,17 @@ typedef enum {
     WBPullRefreshLoading,
 }WBPullRefreshState;
 
+typedef enum {
+    WBPullRefreshRenew = 0,
+    WBPullRefreshMore,
+}WBPullRefreshType;
+
 @protocol WBRefreshTableHeaderViewDelegate
 @required
-- (void)wbRefreshTableHeaderDidTrigger;
+- (void)wbRefreshTableHeaderDidTrigger:(WBPullRefreshType)type;
 - (BOOL)wbRefreshTableHeaderDataSourceIsLoading;
-
+@optional
+- (CGFloat)wbRefreshTableViewContentHeight;
 @end
 
 @interface WBRefreshTableHeaderView : UIView {
@@ -26,6 +32,8 @@ typedef enum {
 }
 
 @property(nonatomic,assign)id<WBRefreshTableHeaderViewDelegate> delegate;
+
+- (id)initWithFrame:(CGRect)frame withRefreshType:(WBPullRefreshType)type;
 
 - (void)wbRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)wbRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;

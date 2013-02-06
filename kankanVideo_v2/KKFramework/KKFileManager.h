@@ -26,4 +26,6 @@ typedef enum {
 + (NSData *)fileDataWithPath:(NSString *)filename ofType:(PathType)pathType;
 + (NSString *)filepathforFilename:(NSString *)filename forType:(PathType)pathType;
 
++ (void)deleteAllCacheData;
+
 @end

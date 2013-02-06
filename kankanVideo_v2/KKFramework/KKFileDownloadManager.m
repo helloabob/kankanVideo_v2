@@ -25,6 +25,7 @@
 @synthesize downloadDidFinishedBlock = _downloadDidFinishedBlock;
 
 - (void)dealloc {
+    NSLog(@"downloadManager_dealloc");
     [_fileUrl release];
     if (_fileData) {
         [_fileData release];
@@ -41,11 +42,12 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:_fileUrl]];
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    NSURLConnection *conn = [[[NSURLConnection alloc] initWithRequest:req delegate:self] autorelease];
     [conn start];
     while (!_shouldExit) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
+    //[[NSRunLoop currentRunLoop] run];
     [pool drain];
 }
 
@@ -67,8 +69,8 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [connection release];
-    connection = nil;
+    //[connection release];
+    //connection = nil;
     _shouldExit = YES;
     //[_delegate fileDidDownloadSuccessfully:self withData:_fileData];
     if (_saveCacheFlag) {
@@ -78,8 +80,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [connection release];
-    connection = nil;
+    //[connection release];
+    //connection = nil;
     _shouldExit = YES;
     [self callback];
     //[_delegate fileDidFailed:self withError:error];
@@ -113,6 +115,14 @@
     _saveCacheFlag = savecache;
     self.downloadDidFinishedBlock = completion;
     [self downloadFile];
+}
+
++ (NSString *)cacheFilePath:(NSString *)url {
+    if ([KKFileManager fileExists:kDownloadCachePath(url) ofType:CachePath]) {
+        return [KKFileManager filepathforFilename:kDownloadCachePath(url) forType:CachePath];
+    } else {
+        return nil;
+    }
 }
 
 //- (void)stopDownload {

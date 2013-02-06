@@ -26,6 +26,7 @@
     
     KKHomeViewController *homeViewController = [[KKHomeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    [nav.navigationBar setTintColor:[UIColor redColor]];
     [_window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     

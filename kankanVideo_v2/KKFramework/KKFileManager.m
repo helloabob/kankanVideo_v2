@@ -10,6 +10,13 @@
 
 @implementation KKFileManager
 
++ (void)deleteAllCacheData {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *path = [KKFileManager filepathforFilename:kDownloadCacheDirectory forType:CachePath];
+    [fm removeItemAtPath:path error:nil];
+    [KKConfiguration defaultConfiguration];
+}
+
 + (void)writeToFile:(NSString *)filename ofType:(PathType)pathType withData:(NSData *)filedata {
     [filedata writeToFile:[self filepathforFilename:filename forType:pathType] atomically:YES];
 }
