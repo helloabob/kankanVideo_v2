@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBRefreshTableHeaderView.h"
 
 @interface KKListViewController : UIViewController
+
+@property(nonatomic,retain) NSString *channelId;
 
 @end

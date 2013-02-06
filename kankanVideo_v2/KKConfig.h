@@ -12,10 +12,10 @@
 #define iPhone5                 ([UIScreen mainScreen].bounds.size.height == 568)
 
 //web interface
-#define kHomeBigImageUrl         @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=index"
-#define kChannelListUrl          @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=clistphone"
-#define kVideoListUrl            @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=vlist&cid=%@&pagesize=20&page=%d"
-#define kVideoPlayUrl            @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=vcontent&url=%@"
+#define kHomeBigImageUrl                @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=index"
+#define kChannelListUrl                 @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=clistphone"
+#define kVideoListUrl(cid,pid)          [NSString stringWithFormat:@"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=vlist&cid=%@&pagesize=20&page=%d",cid,pid]
+#define kVideoPlayUrl                   @"http://interface.kankanews.com/kkapi/mobile/mobileapi.php?m=vcontent&url=%@"
 //end
 
 //weibo share

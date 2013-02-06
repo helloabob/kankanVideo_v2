@@ -82,8 +82,8 @@
     [_contentView setBackgroundColor:[UIColor whiteColor]];
     //_contentView.layer.cornerRadius = 10.0f;
     //_contentView.layer.masksToBounds = YES;
-    //_contentView.layer.borderColor = [[UIColor redColor] CGColor];
-    //_contentView.layer.borderWidth = 1.0f;
+    _contentView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    _contentView.layer.borderWidth = 1.0f;
     
     _currentItemStatus = ItemNormalStatus;
     

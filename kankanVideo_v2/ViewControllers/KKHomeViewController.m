@@ -77,7 +77,9 @@
 
 - (void)dealloc {
     [_itemDataArray release];
-    [_listViewController release];
+    if (_listViewController) {
+        [_listViewController release];
+    }
     [_itemArray release];
     if (_initDataDownloadManager) {
         [_initDataDownloadManager release];
@@ -90,7 +92,7 @@
     [super loadView];
     [self.view setBackgroundColor:[UIColor grayColor]];
     
-    _sceneView = [[KKSceneView alloc] initWithFrame:SCENE_FRAME];
+    _sceneView = [[KKSceneView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_sceneView];
     [_sceneView release];
     
@@ -99,7 +101,7 @@
     
     //NSLog(@"%d",[_sceneView retainCount]);
     
-    _contentScrollView = [[UIScrollView alloc] initWithFrame:SCENE_FRAME];
+    _contentScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [_contentScrollView setPagingEnabled:YES];
     [self.view addSubview:_contentScrollView];
     [_contentScrollView release];
@@ -174,10 +176,11 @@
 #pragma KKHomeItemViewDelegate
 
 - (void)itemTapped:(KKHomeItemView *)itemView {
-    if (!_listViewController) {
-        _listViewController = [[KKListViewController alloc] init]; 
-    }
     if (itemView.currentItemStatus == ItemNormalStatus) {
+        if (!_listViewController) {
+            _listViewController = [[KKListViewController alloc] init];
+        }
+        _listViewController.channelId = [itemView.itemData objectForKey:kXMLClassId];
         [self.navigationController pushViewController:_listViewController animated:YES];
     } else {
         [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];

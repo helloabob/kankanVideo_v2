@@ -8,19 +8,30 @@
 
 #import "KKListViewController.h"
 
-@interface KKListViewController ()
+@interface KKListViewController () {
+    NSUInteger              _currentPageIndex;
+    UITableView             *_tblVideoList;
+    
+}
 
 @end
 
 @implementation KKListViewController
+@synthesize channelId = _channelId;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+- (void)setChannelId:(NSString *)channelId {
+    if (_channelId != channelId) {
+        [_channelId release];
+        _channelId = nil;
+        _channelId = [channelId retain];
+        _currentPageIndex = 0;
+        
     }
-    return self;
+}
+
+- (void)dealloc {
+    [_channelId release];
+    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -30,10 +41,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+    NSLog(@"viewWillAppear");
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"viewWillDisappear");
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning

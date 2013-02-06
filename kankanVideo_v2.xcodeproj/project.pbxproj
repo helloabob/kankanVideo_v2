@@ -30,6 +30,7 @@
 		9831DCE816B8FACF005CF59D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCE716B8FACF005CF59D /* Reachability.m */; };
 		9831DCEC16B8FD21005CF59D /* KKFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */; };
 		9831DCF016B90294005CF59D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9831DCEF16B90294005CF59D /* SystemConfiguration.framework */; };
+		984AE02216C168CC00135CE2 /* WBRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984AE02116C168CC00135CE2 /* WBRefreshTableHeaderView.m */; };
 		985071D916B956140096CCF4 /* KKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985071D816B956140096CCF4 /* KKFileManager.m */; };
 		985071DD16BA21AC0096CCF4 /* itemclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DB16BA21AC0096CCF4 /* itemclose.png */; };
 		985071DE16BA21AC0096CCF4 /* itemclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DC16BA21AC0096CCF4 /* itemclose@2x.png */; };
@@ -96,6 +97,8 @@
 		9831DCEA16B8FD21005CF59D /* KKFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKFileDownloadManager.h; path = KKFramework/KKFileDownloadManager.h; sourceTree = "<group>"; };
 		9831DCEB16B8FD21005CF59D /* KKFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileDownloadManager.m; path = KKFramework/KKFileDownloadManager.m; sourceTree = "<group>"; };
 		9831DCEF16B90294005CF59D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		984AE02016C168CC00135CE2 /* WBRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBRefreshTableHeaderView.h; path = ThirdParty/WBRefreshTableHeaderView/WBRefreshTableHeaderView.h; sourceTree = "<group>"; };
+		984AE02116C168CC00135CE2 /* WBRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBRefreshTableHeaderView.m; path = ThirdParty/WBRefreshTableHeaderView/WBRefreshTableHeaderView.m; sourceTree = "<group>"; };
 		985071D716B956140096CCF4 /* KKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKFileManager.h; path = KKFramework/KKFileManager.h; sourceTree = "<group>"; };
 		985071D816B956140096CCF4 /* KKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileManager.m; path = KKFramework/KKFileManager.m; sourceTree = "<group>"; };
 		985071DB16BA21AC0096CCF4 /* itemclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemclose.png; path = images/home/itemclose.png; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 		9831DCE516B8FA97005CF59D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				984AE01F16C168BD00135CE2 /* WBRefreshTableHeaderView */,
 				987D9B4916BC35AB0056AD21 /* DDXML */,
 				9831DCE616B8FACF005CF59D /* Reachability.h */,
 				9831DCE716B8FACF005CF59D /* Reachability.m */,
@@ -294,6 +298,15 @@
 				987D9B5A16BCBF7B0056AD21 /* NSString+MD5.m */,
 			);
 			name = KKFramework;
+			sourceTree = "<group>";
+		};
+		984AE01F16C168BD00135CE2 /* WBRefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				984AE02016C168CC00135CE2 /* WBRefreshTableHeaderView.h */,
+				984AE02116C168CC00135CE2 /* WBRefreshTableHeaderView.m */,
+			);
+			name = WBRefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
 		986C58EC16BFF52800F6AD52 /* common */ = {
@@ -453,6 +466,7 @@
 				987D9B5316BC35E60056AD21 /* DDXMLNode.m in Sources */,
 				987D9B5816BC363A0056AD21 /* NSString+DDXML.m in Sources */,
 				987D9B5B16BCBF7C0056AD21 /* NSString+MD5.m in Sources */,
+				984AE02216C168CC00135CE2 /* WBRefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
