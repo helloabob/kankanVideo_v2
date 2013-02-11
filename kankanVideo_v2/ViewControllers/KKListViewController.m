@@ -20,6 +20,7 @@
     WBRefreshTableHeaderView        *_footerTableView;
     BOOL                            _isloading;
     WBPullRefreshType               refreshType;
+    UIBarButtonItem                 *_rightButton;
 }
 
 @end
@@ -101,6 +102,8 @@
     //NSLog(@"listcontroller_viewdidload");
     //_arrVideoList = [[NSMutableArray alloc] init];
     
+    
+    
     _listContentView = [[UIView alloc] initWithFrame:NAV_VIEW_FRAME];
     [self.view addSubview:_listContentView];
     [_listContentView release];
@@ -131,14 +134,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-    //UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction:)];
-    //UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Posterous"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectRightAction:)];
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 30, 30);
-    [btn addTarget:self action:@selector(selectRightAction:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImage:[UIImage imageNamed:@"Posterous"] forState:UIControlStateNormal];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    if (!_rightButton) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, 25, 25);
+        [btn addTarget:self action:@selector(selectRightAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setBackgroundImage:[UIImage imageNamed:@"right_button_scroll"] forState:UIControlStateNormal];
+        _rightButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    self.navigationItem.rightBarButtonItem = _rightButton;
 }
 
 - (void)selectRightAction:(UIEvent *)sender {
