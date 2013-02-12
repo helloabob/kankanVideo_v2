@@ -38,6 +38,9 @@
 		985071D916B956140096CCF4 /* KKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985071D816B956140096CCF4 /* KKFileManager.m */; };
 		985071DD16BA21AC0096CCF4 /* itemclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DB16BA21AC0096CCF4 /* itemclose.png */; };
 		985071DE16BA21AC0096CCF4 /* itemclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DC16BA21AC0096CCF4 /* itemclose@2x.png */; };
+		985C75ED16C9402A0028BEBA /* KKVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */; };
+		986327B716CA627C00275ADF /* left_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 986327B516CA627C00275ADF /* left_button_icon.png */; };
+		986327B816CA627C00275ADF /* left_button_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 986327B616CA627C00275ADF /* left_button_icon@2x.png */; };
 		986C58F516BFF53100F6AD52 /* l1.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58ED16BFF53100F6AD52 /* l1.png */; };
 		986C58F616BFF53100F6AD52 /* l2.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58EE16BFF53100F6AD52 /* l2.png */; };
 		986C58F716BFF53100F6AD52 /* l3.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58EF16BFF53100F6AD52 /* l3.png */; };
@@ -112,6 +115,10 @@
 		985071D816B956140096CCF4 /* KKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKFileManager.m; path = KKFramework/KKFileManager.m; sourceTree = "<group>"; };
 		985071DB16BA21AC0096CCF4 /* itemclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemclose.png; path = images/home/itemclose.png; sourceTree = "<group>"; };
 		985071DC16BA21AC0096CCF4 /* itemclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemclose@2x.png"; path = "images/home/itemclose@2x.png"; sourceTree = "<group>"; };
+		985C75EB16C9402A0028BEBA /* KKVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKVideoDetailViewController.h; path = ViewControllers/KKVideoDetailViewController.h; sourceTree = "<group>"; };
+		985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKVideoDetailViewController.m; path = ViewControllers/KKVideoDetailViewController.m; sourceTree = "<group>"; };
+		986327B516CA627C00275ADF /* left_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_button_icon.png; path = images/list/left_button_icon.png; sourceTree = "<group>"; };
+		986327B616CA627C00275ADF /* left_button_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left_button_icon@2x.png"; path = "images/list/left_button_icon@2x.png"; sourceTree = "<group>"; };
 		986C58ED16BFF53100F6AD52 /* l1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l1.png; path = images/common/l1.png; sourceTree = "<group>"; };
 		986C58EE16BFF53100F6AD52 /* l2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l2.png; path = images/common/l2.png; sourceTree = "<group>"; };
 		986C58EF16BFF53100F6AD52 /* l3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l3.png; path = images/common/l3.png; sourceTree = "<group>"; };
@@ -169,6 +176,8 @@
 		980E396516C2378A009D83F7 /* list */ = {
 			isa = PBXGroup;
 			children = (
+				986327B516CA627C00275ADF /* left_button_icon.png */,
+				986327B616CA627C00275ADF /* left_button_icon@2x.png */,
 				980E396C16C34B7F009D83F7 /* right_button_scroll.png */,
 				980E396D16C34B7F009D83F7 /* right_button_scroll@2x.png */,
 				980E396616C23790009D83F7 /* listback.png */,
@@ -243,6 +252,8 @@
 				9831DCB816B80F74005CF59D /* KKHomeViewController.m */,
 				9831DCDE16B8C947005CF59D /* KKListViewController.h */,
 				9831DCDF16B8C947005CF59D /* KKListViewController.m */,
+				985C75EB16C9402A0028BEBA /* KKVideoDetailViewController.h */,
+				985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -465,6 +476,8 @@
 				980E396716C23790009D83F7 /* listback.png in Resources */,
 				980E396E16C34B7F009D83F7 /* right_button_scroll.png in Resources */,
 				980E396F16C34B7F009D83F7 /* right_button_scroll@2x.png in Resources */,
+				986327B716CA627C00275ADF /* left_button_icon.png in Resources */,
+				986327B816CA627C00275ADF /* left_button_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +506,7 @@
 				987D9B5B16BCBF7C0056AD21 /* NSString+MD5.m in Sources */,
 				984AE02216C168CC00135CE2 /* WBRefreshTableHeaderView.m in Sources */,
 				980E396416C22FC0009D83F7 /* KKListTableViewCell.m in Sources */,
+				985C75ED16C9402A0028BEBA /* KKVideoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,6 +43,7 @@
 #define kXMLPname                       @"pname"
 #define kXMLIsGood                      @"isgood"
 #define kXMLFirstTitle                  @"firsttitle"
+#define kXMLIntro                       @"intro"
 #define kXMLIndex                       @"index"
 //end
 

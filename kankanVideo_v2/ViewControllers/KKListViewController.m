@@ -7,20 +7,23 @@
 //
 
 #import "KKListViewController.h"
+#import "KKVideoDetailViewController.h"
 
 #define NAV_VIEW_FRAME              CGRectMake(0, 0, 320, self.view.frame.size.height-44)
 
 @interface KKListViewController () {
-    NSUInteger                      _currentPageIndex;
-    UITableView                     *_tblVideoList;
-    NSMutableArray                  *_arrVideoList;
-    UIView                          *_listContentView;
-    UIView                          *_scrollContentView;
-    WBRefreshTableHeaderView        *_headerTableView;
-    WBRefreshTableHeaderView        *_footerTableView;
-    BOOL                            _isloading;
-    WBPullRefreshType               refreshType;
-    UIBarButtonItem                 *_rightButton;
+    NSUInteger                      _currentPageIndex;              //当前页码索引
+    UITableView                     *_tblVideoList;                 //uitableview视图
+    NSMutableArray                  *_arrVideoList;                 //uitableview对应数组
+    UIView                          *_listContentView;              //uitableview所在uiview
+    UIView                          *_scrollContentView;            //scrollview所在uiview
+    WBRefreshTableHeaderView        *_headerTableView;              //下拉刷新视图
+    WBRefreshTableHeaderView        *_footerTableView;              //上拉刷新视图
+    BOOL                            _isloading;                     //是否在加载数据
+    WBPullRefreshType               refreshType;                    //刷新类型  上拉/下拉
+    UIBarButtonItem                 *_rightButton;                  //右上角按钮，切换视图模式
+    UIBarButtonItem                 *_leftButton;
+    KKVideoDetailViewController     *_videoDetailViewController;    //视频详细播放页视图
 }
 
 @end
@@ -49,7 +52,8 @@
                                                               withKeys:[NSArray arrayWithObjects:kXMLTitle
                                                                       ,kXMLTitleUrl
                                                                       ,kXMLTitlePic
-                                                                    ,kXMLPubDate, nil]]];
+                                                                    ,kXMLPubDate
+                                                                    ,kXMLIntro, nil]]];
               if (_tblVideoList) {
                   [_tblVideoList reloadData];
                   _isloading = NO;
@@ -64,20 +68,21 @@
 
 - (void)refreshVideoList {
     _currentPageIndex = 1;
-    if (_arrVideoList) {
-        [_arrVideoList release];
-        _arrVideoList = nil;
-    }
+    
     KKFileDownloadManager *dm = [[[KKFileDownloadManager alloc] init] autorelease];
     [dm downloadFile:kVideoListUrl(_channelId, _currentPageIndex)
            readCache:NO
            saveCache:NO
           completion:^(NSData *xmldata){
-              _arrVideoList = [KKXMLParser parseXML:xmldata withKeys:[NSArray arrayWithObjects:kXMLTitle
+              if (_arrVideoList) {
+                  [_arrVideoList release];
+                  _arrVideoList = nil;
+              }
+              _arrVideoList = [[NSMutableArray alloc] initWithArray:[KKXMLParser parseXML:xmldata withKeys:[NSArray arrayWithObjects:kXMLTitle
                                                       ,kXMLTitleUrl
                                                       ,kXMLTitlePic
-                                                      ,kXMLPubDate, nil]];
-              [_arrVideoList retain];
+                                                      ,kXMLPubDate
+                                                      ,kXMLIntro, nil]]];
               if (_tblVideoList) {
                   [_tblVideoList reloadData];
                   _isloading = NO;
@@ -91,6 +96,8 @@
 }
 
 - (void)dealloc {
+    [_leftButton release];
+    [_rightButton release];
     [_channelId release];
     [super dealloc];
 }
@@ -128,13 +135,6 @@
     [_footerTableView release];
 
     
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    
     if (!_rightButton) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, 25, 25);
@@ -143,6 +143,26 @@
         _rightButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
     self.navigationItem.rightBarButtonItem = _rightButton;
+    
+    if (!_leftButton) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, 20, 25);
+        [btn addTarget:self action:@selector(selectBackAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setBackgroundImage:[UIImage imageNamed:@"left_button_icon"] forState:UIControlStateNormal];
+        _leftButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    self.navigationItem.leftBarButtonItem = _leftButton;
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (void)selectBackAction:(UIEvent *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)selectRightAction:(UIEvent *)sender {
@@ -191,6 +211,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //NSLog(@"select:%d",indexPath.row);
+    if (!_videoDetailViewController) {
+        _videoDetailViewController = [[KKVideoDetailViewController alloc] init];
+    }
+    [self.navigationController pushViewController:_videoDetailViewController animated:YES];
+    _videoDetailViewController.title = self.title;
+    _videoDetailViewController.metaData = [_arrVideoList objectAtIndex:indexPath.row];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
