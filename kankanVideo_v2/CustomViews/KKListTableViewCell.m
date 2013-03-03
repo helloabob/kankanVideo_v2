@@ -11,9 +11,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface KKListTableViewCell() {
-    BOOL                            _isDownloaded;
-    UIImageView                     *_videoIconImageView;
-    UILabel                         *_lblTitle;
+    BOOL                            _isDownloaded;                  //图片是否已下载
+    UIImageView                     *_videoIconImageView;           //图片
+    UILabel                         *_lblTitle;                     //标题
+    UILabel                         *_lblPubDate;                   //发布时间
 }
 
 @end
@@ -26,10 +27,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-//        self.textLabel.font = [UIFont systemFontOfSize:12.0f];
-//        [self.textLabel setFrame:CGRectMake(100, 5, 200, self.frame.size.height/2)];
-//        self.textLabel.backgroundColor = [UIColor blackColor];
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self setSelectionStyle:UITableViewCellSelectionStyleGray];
+        [self setSelectedBackgroundView:[[[UIView alloc] initWithFrame:self.frame] autorelease]];
+        self.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
         _videoIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 3, 92, 69)];
         _videoIconImageView.layer.cornerRadius = 10.0f;
         _videoIconImageView.layer.masksToBounds = YES;
@@ -39,10 +39,19 @@
         _lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(100, 5, 210, 45)];
         [_lblTitle setLineBreakMode:NSLineBreakByWordWrapping];
         [_lblTitle setNumberOfLines:0];
-        [_lblTitle setFont:[UIFont boldSystemFontOfSize:12.0f]];
+        [_lblTitle setFont:[UIFont boldSystemFontOfSize:15.0f]];
         [_lblTitle setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_lblTitle];
         [_lblTitle release];
+        
+        _lblPubDate = [[UILabel alloc] initWithFrame:CGRectMake(100, 55, 210, 20)];
+        [_lblPubDate setLineBreakMode:NSLineBreakByWordWrapping];
+        [_lblPubDate setNumberOfLines:0];
+        [_lblPubDate setFont:[UIFont systemFontOfSize:11.0f]];
+        [_lblPubDate setTextColor:[UIColor grayColor]];
+        [_lblPubDate setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:_lblPubDate];
+        [_lblPubDate release];
     }
     return self;
 }
@@ -58,6 +67,10 @@
 - (void)initData {
 //    self.textLabel.text = [_cellData objectForKey:kXMLTitle];
     [_lblTitle setText:[_cellData objectForKey:kXMLTitle]];
+    [_lblPubDate setText:[_cellData objectForKey:kXMLPubDate]];
+    NSString *strDate = [_cellData objectForKey:kXMLPubDate];
+    //_lblPubDate.text = [NSString stringWithFormat:@"%@,%@",strDate,[KKSysUtils dateToCountString:strDate]];
+    _lblPubDate.text = [KKSysUtils dateToCountString:strDate];
     NSString *strPic = [KKFileDownloadManager cacheFilePath:[_cellData objectForKey:kXMLTitlePic]];
     //NSLog(@"%@",strPic);
     if (strPic != nil) {

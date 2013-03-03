@@ -45,6 +45,7 @@
 #define kXMLFirstTitle                  @"firsttitle"
 #define kXMLIntro                       @"intro"
 #define kXMLIndex                       @"index"
+#define kXMLVideoUrl                    @"videourl"
 //end
 
 #import "Reachability.h"
@@ -53,6 +54,7 @@
 #import "KKXMLParser.h"
 #import "NSString+MD5.h"
 #import "KKConfiguration.h"
+#import "KKSysUtils.h"
 
 
 

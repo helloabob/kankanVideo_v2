@@ -8,6 +8,7 @@
 
 #import "KKListViewController.h"
 #import "KKVideoDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define NAV_VIEW_FRAME              CGRectMake(0, 0, 320, self.view.frame.size.height-44)
 
@@ -118,6 +119,8 @@
     _tblVideoList = [[UITableView alloc] initWithFrame:_listContentView.frame];
     _tblVideoList.delegate = self;
     _tblVideoList.dataSource = self;
+    _tblVideoList.backgroundView = nil;
+    _tblVideoList.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1.0];
     [_listContentView addSubview:_tblVideoList];
     [_tblVideoList release];
     
@@ -158,10 +161,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)selectBackAction:(UIEvent *)sender {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = @"rippleEffect";
+    transition.subtype = kCATransitionFromRight;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -217,6 +231,7 @@
     [self.navigationController pushViewController:_videoDetailViewController animated:YES];
     _videoDetailViewController.title = self.title;
     _videoDetailViewController.metaData = [_arrVideoList objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

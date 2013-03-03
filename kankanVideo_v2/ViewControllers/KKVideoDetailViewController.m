@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "KKFileDownloadManager.h"
 
+#define accessToken(url) [[[[NSString stringWithFormat:@"api_key=mobile&m=vcontent&url=%@532c28d5412dd75bf975fb951c740a30",url] stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"] stringByReplacingOccurrencesOfString:@":" withString:@"%3A"] md5]
+
+#define videoUrl(accToken,url) [NSString stringWithFormat:@"http://interface.kankanews.com/kkapi/mobile/mobileapin.php?api_key=mobile&access_token=%@&m=vcontent&url=%@", accToken, url]
+
 @interface KKVideoDetailViewController (){
     UIBarButtonItem                 *_leftButton;
 }
@@ -33,9 +37,14 @@
 }
 
 - (void)updateData {
+    _videoUrl = nil;
     [_lblTitle setText:[_metaData objectForKey:kXMLTitle]];
     [_lblIntro setText:[NSString stringWithFormat:@"简介：%@",[_metaData objectForKey:kXMLIntro]]];
+    //reset label frame to prevent the size bug.
+    [_lblIntro setFrame:CGRectMake(0, 0, 280, _secondView.bounds.size.height-20)];
     [_lblIntro sizeToFit];
+    [_introScrollView setContentSize:_lblIntro.frame.size];
+    _lblPubdate.text = [NSString stringWithFormat:@"日期:%@",[_metaData objectForKey:kXMLPubDate]];
     KKFileDownloadManager *dm = [[[KKFileDownloadManager alloc] init] autorelease];
     [dm downloadFile:[_metaData objectForKey:kXMLTitlePic]
            readCache:YES
@@ -43,6 +52,23 @@
           completion:^(NSData *imageData){
               _iconImageView.image = [UIImage imageWithData:imageData];
     }];
+    //[self performSelector:@selector(getVideoM3U8Url) withObject:nil afterDelay:1.0f];
+    [self getVideoM3U8Url];
+}
+
+- (void)getVideoM3U8Url {
+    NSString *url = videoUrl(accessToken([_metaData objectForKey:kXMLTitleUrl]), [_metaData objectForKey:kXMLTitleUrl]);
+    KKFileDownloadManager *dm = [[[KKFileDownloadManager alloc] init] autorelease];
+    [dm downloadFile:url
+           readCache:YES
+           saveCache:YES
+          completion:^(NSData *xmlData){
+              NSMutableArray *dict = [KKXMLParser parseXML:xmlData withKeys:[NSArray arrayWithObjects:kXMLVideoUrl, nil]];
+              if (dict.count > 0 && [[dict objectAtIndex:0] objectForKey:kXMLVideoUrl]) {
+                  _videoUrl = [[dict objectAtIndex:0] objectForKey:kXMLVideoUrl];
+                  [_playButton setEnabled:YES];
+              }
+          }];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,6 +84,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1.0];
+    
     if (!_leftButton) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, 20, 25);
@@ -73,6 +101,7 @@
         [_lblTitle setTextAlignment:NSTextAlignmentCenter];
         [_lblTitle setLineBreakMode:NSLineBreakByWordWrapping];
         [_lblTitle setNumberOfLines:0];
+        [_lblTitle setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_lblTitle];
         [_lblTitle release];
     }
@@ -91,6 +120,19 @@
         _iconImageView.layer.masksToBounds = YES;
         [_firstView addSubview:_iconImageView];
         [_iconImageView release];
+        
+        _lblPubdate = [[UILabel alloc] initWithFrame:CGRectMake(180, 10, 110, 20)];
+        _lblPubdate.font = [UIFont systemFontOfSize:11.0f];
+        _lblPubdate.textAlignment = NSTextAlignmentLeft;
+        [_lblPubdate setBackgroundColor:[UIColor clearColor]];
+        [_firstView addSubview:_lblPubdate];
+        [_lblPubdate release];
+        
+        _playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_playButton setTitle:@"播放" forState:UIControlStateNormal];
+        [_playButton setFrame:CGRectMake(180, 90, 110, 30)];
+        [_playButton setEnabled:NO];
+        [_firstView addSubview:_playButton];
     }
     
     if (!_secondView) {
@@ -102,13 +144,17 @@
         [self.view addSubview:_secondView];
         [_secondView release];
         
-        _lblIntro = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 280, _secondView.bounds.size.height-20)];
+        _introScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 10, 280, _secondView.bounds.size.height-20)];
+        [_secondView addSubview:_introScrollView];
+        
+        _lblIntro = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, _secondView.bounds.size.height-20)];
         [_lblIntro setFont:[UIFont systemFontOfSize:12.0f]];
         [_lblIntro setTextAlignment:NSTextAlignmentLeft];
         [_lblIntro setLineBreakMode:NSLineBreakByWordWrapping];
         [_lblIntro setNumberOfLines:0];
+        [_lblIntro setBackgroundColor:[UIColor clearColor]];
         //[_lblIntro sizeToFit];
-        [_secondView addSubview:_lblIntro];
+        [_introScrollView addSubview:_lblIntro];
         [_lblIntro release];
     }
     
@@ -118,12 +164,28 @@
         _bottomView.layer.borderWidth = 1.0f;
         [self.view addSubview:_bottomView];
         [_bottomView release];
+        
+        UIButton *btnFavority = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnFavority.frame = CGRectMake(10, 5, 30, 30);
+        [btnFavority setTitle:@"收藏" forState:UIControlStateNormal];
+        [_bottomView addSubview:btnFavority];
+        
+        UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnShare.frame = CGRectMake(50, 5, 30, 30);
+        [btnShare setTitle:@"分享" forState:UIControlStateNormal];
+        [_bottomView addSubview:btnShare];
     }
     
 }
 
 - (void)selectBackAction:(UIEvent *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    _videoUrl = nil;
+    [_playButton setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning

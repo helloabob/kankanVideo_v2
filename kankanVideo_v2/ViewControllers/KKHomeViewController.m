@@ -9,6 +9,7 @@
 #import "KKHomeViewController.h"
 #import "KKSceneView.h"
 #import "KKListViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define SCENE_FRAME                 CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
 #define RIGHT_SETTING_VIEW_FRAME    CGRectMake(250,0,70,self.view.frame.size.height)
@@ -90,11 +91,16 @@
 
 - (void)loadView {
     [super loadView];
-    [self.view setBackgroundColor:[UIColor grayColor]];
+    self.view.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
+//    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_bj"]];
+//    [self.view addSubview:backgroundImageView];
+//    [backgroundImageView release];
     
     _sceneView = [[KKSceneView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_sceneView];
     [_sceneView release];
+    
+    
     
     //[NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timeout) userInfo:nil repeats:YES];
     
@@ -113,20 +119,27 @@
     
     UIButton *btnRefresh = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnRefresh setBackgroundImage:[UIImage imageNamed:@"home_button_refresh.png"] forState:UIControlStateNormal];
-    [btnRefresh setFrame:CGRectMake(0, 0, 40, 40)];
+    [btnRefresh setFrame:CGRectMake(0, 0, 32, 32)];
     [btnRefresh setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-4*50)];
     [btnRefresh addTarget:self action:@selector(btnRefreshTapped:) forControlEvents:UIControlEventTouchUpInside];
     [_rightSettingView addSubview:btnRefresh];
     
+    UIButton *btnClear = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnClear setBackgroundImage:[UIImage imageNamed:@"home_button_clear.png"] forState:UIControlStateNormal];
+    [btnClear setFrame:CGRectMake(0, 0, 32, 32)];
+    [btnClear setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-3*50)];
+    [btnClear addTarget:self action:@selector(btnClearTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [_rightSettingView addSubview:btnClear];
+    
     UIButton *btnSetting = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnSetting setBackgroundImage:[UIImage imageNamed:@"home_button_setting"] forState:UIControlStateNormal];
-    [btnSetting setFrame:CGRectMake(0, 0, 40, 40)];
+    [btnSetting setFrame:CGRectMake(0, 0, 32, 32)];
     [btnSetting setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-2*50)];
     [_rightSettingView addSubview:btnSetting];
     
     UIButton *btnSubScribe = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnSubScribe setBackgroundImage:[UIImage imageNamed:@"home_button_subscribe"] forState:UIControlStateNormal];
-    [btnSubScribe setFrame:CGRectMake(0, 0, 40, 40)];
+    [btnSubScribe setFrame:CGRectMake(0, 0, 32, 32)];
     [btnSubScribe setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-1*50)];
     [_rightSettingView addSubview:btnSubScribe];
     
@@ -173,13 +186,21 @@
 #pragma UIEvent in right setting
 
 - (void)btnRefreshTapped:(UIEvent *)sender {
+    
+}
+
+- (void)btnClearTapped:(UIEvent *)sender {
     [KKFileManager deleteAllCacheData];
 }
 
 #pragma end
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 #pragma KKHomeItemViewDelegate
@@ -191,6 +212,13 @@
         }
         _listViewController.title = [itemView.itemData objectForKey:kXMLTitle];
         _listViewController.channelId = [itemView.itemData objectForKey:kXMLClassId];
+//        CATransition *transition = [CATransition animation];
+//        transition.duration = 0.5f;
+//        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//        transition.type = @"cube";
+//        transition.subtype = kCATransitionFromRight;
+//        transition.delegate = self;
+//        [self.navigationController.view.layer addAnimation:transition forKey:nil];
         [self.navigationController pushViewController:_listViewController animated:YES];
     } else {
         [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];

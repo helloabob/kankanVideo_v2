@@ -15,7 +15,12 @@
     UIView                      *_secondView;           //第二个圆形框
     UIView                      *_bottomView;           //底层视图
     UIImageView                 *_iconImageView;        //缩略图视图
+    UILabel                     *_lblPubdate;           //发布时间
+    UIButton                    *_playButton;           //播放按钮
+    UIScrollView                *_introScrollView;      //简介scroll视图
     UILabel                     *_lblIntro;             //简介
+    
+    NSString                    *_videoUrl;             //视频地址
     
 }
 
