@@ -8,7 +8,7 @@
 
 #import "KKSceneView.h"
 
-#define BUTTON_FRAME                CGRectMake(self.frame.size.width-40,self.frame.size.height-40,30,30)
+#define BUTTON_FRAME                CGRectMake(self.frame.size.width-60,self.frame.size.height-60,50,50)
 #define LOGO_FRAME                  CGRectMake(10,10,60,78)
 
 #define DEFAULT_HOME_IMAGE_NAME     @"home_bj.jpg"

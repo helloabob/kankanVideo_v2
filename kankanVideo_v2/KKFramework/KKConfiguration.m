@@ -19,18 +19,25 @@
         [fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
     //初始化SceneView的背景图片索引
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSceneViewBackgroundIndex]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:kSceneViewBackgroundIndex];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+//    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSceneViewBackgroundIndex]) {
+//        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:kSceneViewBackgroundIndex];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
     
     //初始化订阅数据
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSubscriptionKey]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSArray array] forKey:kSubscriptionKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+//    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSubscriptionKey]) {
+//        [[NSUserDefaults standardUserDefaults] setObject:[NSArray array] forKey:kSubscriptionKey];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
     
-    //
+    //use registerDefaults function to replace the old function.
+    //初始化SceneView的背景图片索引
+    //初始化订阅数据
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                             [NSNumber numberWithInt:0],
+                                                             kSceneViewBackgroundIndex,
+                                                             [NSArray array],
+                                                             kSubscriptionKey, nil]];
 }
 
 + (void)setSubscriptionData:(NSArray *)array {

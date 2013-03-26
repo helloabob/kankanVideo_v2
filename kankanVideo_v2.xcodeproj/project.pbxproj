@@ -41,6 +41,8 @@
 		985071DD16BA21AC0096CCF4 /* itemclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DB16BA21AC0096CCF4 /* itemclose.png */; };
 		985071DE16BA21AC0096CCF4 /* itemclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985071DC16BA21AC0096CCF4 /* itemclose@2x.png */; };
 		985C75ED16C9402A0028BEBA /* KKVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */; };
+		986083BF16E7377F00829620 /* KKMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986083BE16E7377F00829620 /* KKMoviePlayerViewController.m */; };
+		986083C116E7378E00829620 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 986083C016E7378E00829620 /* MediaPlayer.framework */; };
 		986327B716CA627C00275ADF /* left_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 986327B516CA627C00275ADF /* left_button_icon.png */; };
 		986327B816CA627C00275ADF /* left_button_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 986327B616CA627C00275ADF /* left_button_icon@2x.png */; };
 		986C58F516BFF53100F6AD52 /* l1.png in Resources */ = {isa = PBXBuildFile; fileRef = 986C58ED16BFF53100F6AD52 /* l1.png */; };
@@ -121,6 +123,9 @@
 		985071DC16BA21AC0096CCF4 /* itemclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemclose@2x.png"; path = "images/home/itemclose@2x.png"; sourceTree = "<group>"; };
 		985C75EB16C9402A0028BEBA /* KKVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKVideoDetailViewController.h; path = ViewControllers/KKVideoDetailViewController.h; sourceTree = "<group>"; };
 		985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKVideoDetailViewController.m; path = ViewControllers/KKVideoDetailViewController.m; sourceTree = "<group>"; };
+		986083BD16E7377F00829620 /* KKMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKMoviePlayerViewController.h; path = ViewControllers/KKMoviePlayerViewController.h; sourceTree = "<group>"; };
+		986083BE16E7377F00829620 /* KKMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKMoviePlayerViewController.m; path = ViewControllers/KKMoviePlayerViewController.m; sourceTree = "<group>"; };
+		986083C016E7378E00829620 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		986327B516CA627C00275ADF /* left_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_button_icon.png; path = images/list/left_button_icon.png; sourceTree = "<group>"; };
 		986327B616CA627C00275ADF /* left_button_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left_button_icon@2x.png"; path = "images/list/left_button_icon@2x.png"; sourceTree = "<group>"; };
 		986C58ED16BFF53100F6AD52 /* l1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = l1.png; path = images/common/l1.png; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986083C116E7378E00829620 /* MediaPlayer.framework in Frameworks */,
 				98AB48E216BD8DF800453B22 /* QuartzCore.framework in Frameworks */,
 				987D9B4816BC32D70056AD21 /* libxml2.dylib in Frameworks */,
 				9831DCF016B90294005CF59D /* SystemConfiguration.framework in Frameworks */,
@@ -193,6 +199,7 @@
 		9831DC8916B80BDA005CF59D = {
 			isa = PBXGroup;
 			children = (
+				986083C016E7378E00829620 /* MediaPlayer.framework */,
 				98AB48E116BD8DF800453B22 /* QuartzCore.framework */,
 				9831DC9E16B80BDA005CF59D /* kankanVideo_v2 */,
 				9831DC9716B80BDA005CF59D /* Frameworks */,
@@ -259,6 +266,8 @@
 				9831DCDF16B8C947005CF59D /* KKListViewController.m */,
 				985C75EB16C9402A0028BEBA /* KKVideoDetailViewController.h */,
 				985C75EC16C9402A0028BEBA /* KKVideoDetailViewController.m */,
+				986083BD16E7377F00829620 /* KKMoviePlayerViewController.h */,
+				986083BE16E7377F00829620 /* KKMoviePlayerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -517,6 +526,7 @@
 				980E396416C22FC0009D83F7 /* KKListTableViewCell.m in Sources */,
 				985C75ED16C9402A0028BEBA /* KKVideoDetailViewController.m in Sources */,
 				98A3DABF16D629FB0013B06A /* KKSysUtils.m in Sources */,
+				986083BF16E7377F00829620 /* KKMoviePlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +566,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -578,7 +588,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -608,7 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
@@ -617,6 +627,7 @@
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

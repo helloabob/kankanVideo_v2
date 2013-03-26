@@ -243,10 +243,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger rows = 0;
     if (_arrVideoList) {
-        return _arrVideoList.count;
+        rows = _arrVideoList.count;
     }
-    return 0;
+    if (rows == 0) {
+        _footerTableView.hidden = YES;
+    } else {
+        _footerTableView.hidden = NO;
+    }
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

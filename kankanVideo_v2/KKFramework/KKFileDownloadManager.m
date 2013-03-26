@@ -25,7 +25,7 @@
 @synthesize downloadDidFinishedBlock = _downloadDidFinishedBlock;
 
 - (void)dealloc {
-    NSLog(@"downloadManager_dealloc");
+//    NSLog(@"downloadManager_dealloc");
     [_fileUrl release];
     if (_fileData) {
         [_fileData release];

@@ -20,7 +20,10 @@
     if ([date isKindOfClass:[NSString class]]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+        NSTimeZone *zone = [NSTimeZone localTimeZone];
+        dateFormatter.timeZone = zone;
         dt = [dateFormatter dateFromString:date];
+        [dateFormatter release];
     } else {
         dt = date;
     }
@@ -36,7 +39,9 @@
     } else if (diff < 604800) {
         result = [NSString stringWithFormat:@"%llu天前",diff/86400];
     } else {
-        result = [NSString stringWithFormat:@"%@",dt];
+        NSDateFormatter *df = [[[NSDateFormatter alloc] init] autorelease];
+        df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        result = [NSString stringWithFormat:@"%@",[df stringFromDate:dt]];
     }
     return result;
 }

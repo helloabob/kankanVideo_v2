@@ -25,6 +25,8 @@
     UIScrollView            *_contentScrollView;           //item所在滚动视图
     UIView                  *_rightSettingView;            //右侧控制按钮区域及返回normal状态热点
     KKFileDownloadManager   *_initDataDownloadManager;     //初始化数据加载器
+    
+    UIButton                *_btnRestoreViewState;         //返回普通状态按钮
 }
 
 @end
@@ -143,6 +145,14 @@
     [btnSubScribe setCenter:CGPointMake(_rightSettingView.frame.size.width/2, _rightSettingView.frame.size.height-1*50)];
     [_rightSettingView addSubview:btnSubScribe];
     
+    _btnRestoreViewState = [UIButton buttonWithType:102];
+    [_btnRestoreViewState setTitle:@"完成" forState:UIControlStateNormal];
+    [_btnRestoreViewState setFrame:CGRectMake(0, 0, 60, 30)];
+    [_btnRestoreViewState setCenter:CGPointMake(_rightSettingView.frame.size.width/2, 60)];
+    [_btnRestoreViewState addTarget:self action:@selector(restoreViewState) forControlEvents:UIControlEventTouchUpInside];
+    _btnRestoreViewState.hidden = YES;
+    [_rightSettingView addSubview:_btnRestoreViewState];
+    
     _itemDataArray = [[NSMutableArray alloc] initWithArray:[KKConfiguration getSubscriptionData]];
     _itemArray = [[NSMutableArray alloc] init];
     
@@ -193,6 +203,11 @@
     [KKFileManager deleteAllCacheData];
 }
 
+- (void)restoreViewState {
+    [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
+    _btnRestoreViewState.hidden = YES;
+}
+
 #pragma end
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -221,7 +236,7 @@
 //        [self.navigationController.view.layer addAnimation:transition forKey:nil];
         [self.navigationController pushViewController:_listViewController animated:YES];
     } else {
-        [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
+//        [_itemArray makeObjectsPerformSelector:@selector(changeItemStatus:) withObject:[NSNumber numberWithInt:ItemNormalStatus]];
     }
 }
 
@@ -231,6 +246,7 @@
 //    [_rightSettingView addGestureRecognizer:tapGest];
 //    [tapGest release];
     [_contentScrollView bringSubviewToFront:itemView];
+    _btnRestoreViewState.hidden = NO;
 }
 
 - (void)itemViewDidRemoved:(KKHomeItemView *)homeItemView {
