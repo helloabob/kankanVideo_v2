@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A409494181F9CD2002D26B6 /* test.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5A409493181F9CD2002D26B6 /* test.MOV */; };
 		9809E9E316E0BE8C00BBD96F /* home_button_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 9809E9E116E0BE8900BBD96F /* home_button_clear.png */; };
 		9809E9E416E0BE8C00BBD96F /* home_button_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9809E9E216E0BE8A00BBD96F /* home_button_clear@2x.png */; };
 		9809E9E716E0C18F00BBD96F /* home_bj.png in Resources */ = {isa = PBXBuildFile; fileRef = 9809E9E516E0C18C00BBD96F /* home_bj.png */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A409493181F9CD2002D26B6 /* test.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = test.MOV; path = images/test.MOV; sourceTree = "<group>"; };
 		9809E9E116E0BE8900BBD96F /* home_button_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_button_clear.png; path = images/home/home_button_clear.png; sourceTree = "<group>"; };
 		9809E9E216E0BE8A00BBD96F /* home_button_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home_button_clear@2x.png"; path = "images/home/home_button_clear@2x.png"; sourceTree = "<group>"; };
 		9809E9E516E0C18C00BBD96F /* home_bj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_bj.png; path = images/home/home_bj.png; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		9831DCC716B82947005CF59D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5A409493181F9CD2002D26B6 /* test.MOV */,
 				980E396516C2378A009D83F7 /* list */,
 				986C58EC16BFF52800F6AD52 /* common */,
 				98AB48F116BEBE3400453B22 /* config */,
@@ -491,6 +494,7 @@
 				980E396E16C34B7F009D83F7 /* right_button_scroll.png in Resources */,
 				980E396F16C34B7F009D83F7 /* right_button_scroll@2x.png in Resources */,
 				986327B716CA627C00275ADF /* left_button_icon.png in Resources */,
+				5A409494181F9CD2002D26B6 /* test.MOV in Resources */,
 				986327B816CA627C00275ADF /* left_button_icon@2x.png in Resources */,
 				9809E9E316E0BE8C00BBD96F /* home_button_clear.png in Resources */,
 				9809E9E416E0BE8C00BBD96F /* home_button_clear@2x.png in Resources */,
@@ -603,7 +607,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lxml2";
@@ -621,7 +625,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kankanVideo_v2/kankanVideo_v2-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2/**";
 				INFOPLIST_FILE = "kankanVideo_v2/kankanVideo_v2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lxml2";

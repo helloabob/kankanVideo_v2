@@ -26,7 +26,15 @@
     
     KKHomeViewController *homeViewController = [[KKHomeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    [nav.navigationBar setTintColor:[UIColor redColor]];
+    [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
+    nav.navigationBarHidden = YES;
+    if ([KKSysUtils systemVersion] >= 7.0) {
+        [nav.navigationBar setBarTintColor:[UIColor redColor]];
+    } else {
+        [nav.navigationBar setTintColor:[UIColor redColor]];
+        [application setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+    }
+    
     [_window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     

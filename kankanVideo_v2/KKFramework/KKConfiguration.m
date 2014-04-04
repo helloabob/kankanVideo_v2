@@ -52,7 +52,7 @@
 + (int)getHomeViewBackgroundIndex {
     int index = [[[NSUserDefaults standardUserDefaults] objectForKey:kSceneViewBackgroundIndex] intValue];
     int newIndex = index + 1;
-    if (newIndex == 10) {
+    if (newIndex >= 4) {
         newIndex = 0;
     }
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newIndex] forKey:kSceneViewBackgroundIndex];

@@ -29,27 +29,45 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.playerController = [[MPMoviePlayerController alloc] init];
+    _playerController = [[MPMoviePlayerController alloc] init];
     
     [self installMovieNotificationObservers];
     
-    self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, UIScreen.mainScreen.bounds.size.height, UIScreen.mainScreen.bounds.size.width)];
+    self.backgroundView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.height, UIScreen.mainScreen.bounds.size.width)] autorelease];
     self.backgroundView.backgroundColor = [UIColor redColor];
+    self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_backgroundView];
     
-    //_playerController.contentURL = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8"];
-    _playerController.contentURL = [NSURL URLWithString:self.url];
+    _playerController.contentURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"MOV"]];
+    
+//    _playerController.contentURL = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8"];
+//    _playerController.contentURL = [NSURL URLWithString:self.url];
     //NSLog(@"%@",self.url);
     [_playerController prepareToPlay];
-    [_playerController.view setFrame:self.view.frame];
-    _playerController.view.frame = CGRectMake(0, -20, UIScreen.mainScreen.bounds.size.height, UIScreen.mainScreen.bounds.size.width);
+    [_playerController.view setFrame:self.view.bounds];
+    _playerController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//    _playerController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.height, UIScreen.mainScreen.bounds.size.width);
     
-    _playerController.controlStyle = MPMovieControlStyleFullscreen;
+    _playerController.controlStyle = MPMovieControlStyleNone;
     [self.view addSubview:_playerController.view];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
     [_playerController play];
 
-    NSLog(@"%@",_url);
+    UIView *btnTouch = [[UIView alloc] initWithFrame:self.view.bounds];
+    btnTouch.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    btnTouch.backgroundColor = [UIColor clearColor];
+//    btnTouch.alpha = 0;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenTapped)];
+    [btnTouch addGestureRecognizer:tap];
+    [tap release];
+//    [btnTouch addTarget:self action:@selector(screenTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnTouch];
+    [btnTouch release];
+    
+//    NSLog(@"%@",_url);
 //    NSLog(@"=========================");
 //    for (UIView *view in _playerController.view.subviews) {
 //        NSLog(@"view:%@",view);
@@ -57,6 +75,16 @@
     
     
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"toucheBegan");
+}
+
+- (void)screenTapped {
+    NSLog(@"screen_tapped");
+    self.playerController.currentPlaybackTime = 1.0f;
+}
+
 
 /* Register observers for the various movie object notifications. */
 -(void)installMovieNotificationObservers
@@ -98,23 +126,30 @@
 /* Delete the movie player object, and remove the movie notification observers. */
 -(void)deletePlayerAndNotificationObservers
 {
+    [self.backgroundView removeFromSuperview];
     MPMoviePlayerController *player = [self playerController];
-	[player.view removeFromSuperview];
-    
+    [player.view removeFromSuperview];
     [self removeMovieNotificationHandlers];
-    [self setPlayerController:nil];
-    
-    [self dismissModalViewControllerAnimated:NO];
+    //        [self dismissModalViewControllerAnimated:YES];
+//    if (![self isBeingDismissed]||![self isBeingPresented]) {
+    [self performSelector:@selector(dismissDelay) withObject:nil afterDelay:0.5f];
+//    }
+}
+
+- (void)dismissDelay {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dealloc {
-    [self.playerController release];
-    self.playerController = nil;
-    [self.backgroundView release];
     self.backgroundView = nil;
-    [self.url release];
+    self.playerController = nil;
     self.url = nil;
     [super dealloc];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,12 +173,19 @@
     return (interfaceOrientation==UIInterfaceOrientationLandscapeRight);
 }
 
+- (void)displayError:(NSDictionary *)userInfo {
+    NSLog(@"userInfo:%@", userInfo);
+}
+
 #pragma mark Movie Notification Handlers
 
 /*  Notification called when the movie finished playing. */
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
     NSNumber *reason = [[notification userInfo] objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
+    
+    NSLog(@"moviePlayBackDidFinish:%d", [reason intValue]);
+    
 	switch ([reason integerValue])
 	{
             /* The end of the movie was reached. */
@@ -151,17 +193,17 @@
             /*
              Add your code here to handle MPMovieFinishReasonPlaybackEnded.
              */
+            [self deletePlayerAndNotificationObservers];
 			break;
             
             /* An error was encountered during playback. */
 		case MPMovieFinishReasonPlaybackError:
             NSLog(@"An error was encountered during playback");
-            [self performSelectorOnMainThread:@selector(displayError:) withObject:[[notification userInfo] objectForKey:@"error"]
-                                waitUntilDone:NO];
+//            [self performSelectorOnMainThread:@selector(displayError:) withObject:[[notification userInfo] objectForKey:@"error"]
+//                                waitUntilDone:NO];
 //            [self removeMovieViewFromViewHierarchy];
 //            [self removeOverlayView];
             [self deletePlayerAndNotificationObservers];
-            [self.backgroundView removeFromSuperview];
 			break;
             
             /* The user stopped playback. */
@@ -169,7 +211,6 @@
 //            [self removeMovieViewFromViewHierarchy];
 //            [self removeOverlayView];
             [self deletePlayerAndNotificationObservers];
-            [self.backgroundView removeFromSuperview];
 			break;
             
 		default:
@@ -182,6 +223,8 @@
 {
 	MPMoviePlayerController *player = notification.object;
 	MPMovieLoadState loadState = player.loadState;
+    
+    NSLog(@"loadStateDidChange:%d", loadState);
     
 	/* The load state is not known at this time. */
 	if (loadState & MPMovieLoadStateUnknown)
@@ -219,6 +262,8 @@
 {
 	MPMoviePlayerController *player = notification.object;
     
+    NSLog(@"moviePlayBackStateDidChange:%d", player.playbackState);
+    
 	/* Playback is currently stopped. */
 	if (player.playbackState == MPMoviePlaybackStateStopped)
 	{
@@ -248,6 +293,7 @@
 {
 	// Add an overlay view on top of the movie view
 //    [self addOverlayView];
+    NSLog(@"mediaIsPreparedToPlayDidChange");
 }
 
 @end

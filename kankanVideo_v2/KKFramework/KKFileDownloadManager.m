@@ -41,7 +41,8 @@
 - (void)downloadThread {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:_fileUrl]];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_fileUrl]];
+    req.timeoutInterval = 30;
     NSURLConnection *conn = [[[NSURLConnection alloc] initWithRequest:req delegate:self] autorelease];
     [conn start];
     while (!_shouldExit) {

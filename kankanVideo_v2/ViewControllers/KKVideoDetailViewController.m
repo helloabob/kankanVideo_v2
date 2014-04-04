@@ -42,6 +42,10 @@
 - (void)updateData {
     self.videoUrl = nil;
     _playButton.enabled = NO;
+    if (_lblTitle == nil) {
+        [self performSelector:@selector(updateData) withObject:nil afterDelay:0.3f];
+        return;
+    }
     [_lblTitle setText:[_metaData objectForKey:kXMLTitle]];
     [_lblIntro setText:[NSString stringWithFormat:@"简介：%@",[_metaData objectForKey:kXMLIntro]]];
     //reset label frame to prevent the size bug.
@@ -111,6 +115,11 @@
     }
     self.navigationItem.leftBarButtonItem = _leftButton;
     
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, [KKSysUtils systemVersion]>=7.0?(self.view.bounds.size.height-64):(self.view.bounds.size.height-44))];
+    [self.view addSubview:scrollView];
+//    scrollView.backgroundColor = [UIColor grayColor];
+    [scrollView release];
+    
     if (!_lblTitle) {
         _lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 50)];
         [_lblTitle setFont:[UIFont boldSystemFontOfSize:15.0f]];
@@ -118,7 +127,7 @@
         [_lblTitle setLineBreakMode:NSLineBreakByWordWrapping];
         [_lblTitle setNumberOfLines:0];
         [_lblTitle setBackgroundColor:[UIColor clearColor]];
-        [self.view addSubview:_lblTitle];
+        [scrollView addSubview:_lblTitle];
         [_lblTitle release];
     }
     
@@ -128,7 +137,7 @@
         _firstView.layer.borderColor = detailBorderColor;
         _firstView.layer.masksToBounds = YES;
         _firstView.layer.cornerRadius = 10.0f;
-        [self.view addSubview:_firstView];
+        [scrollView addSubview:_firstView];
         [_firstView release];
         
         _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 160, 120)];
@@ -151,20 +160,23 @@
         [_firstView addSubview:_lblPubtime];
         [_lblPubtime release];
         
-        _playButton = [UIButton buttonWithType:102];
+        _playButton = [[[UIButton alloc] init] autorelease];
         [_playButton setTitle:@"播放" forState:UIControlStateNormal];
+        [_playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_playButton setBackgroundColor:[UIColor grayColor]];
         [_playButton setFrame:CGRectMake(180, 90, 110, 30)];
+        _playButton.layer.cornerRadius = 7.0f;
         [_playButton addTarget:self action:@selector(playVideo) forControlEvents:UIControlEventTouchUpInside];
         [_firstView addSubview:_playButton];
     }
     
     if (!_secondView) {
-        _secondView = [[UIView alloc] initWithFrame:CGRectMake(10, 210, 300, 416+(iPhone5?88:0)-40-10-210)];
+        _secondView = [[UIView alloc] initWithFrame:CGRectMake(10, 210, 300, scrollView.bounds.size.height-40-10-210)];
         _secondView.layer.borderWidth = 1.0f;
         _secondView.layer.borderColor = detailBorderColor;
         _secondView.layer.masksToBounds = YES;
         _secondView.layer.cornerRadius = 10.0f;
-        [self.view addSubview:_secondView];
+        [scrollView addSubview:_secondView];
         [_secondView release];
         
         _introScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 10, 280, _secondView.bounds.size.height-20)];
@@ -182,10 +194,10 @@
     }
     
     if (!_bottomView) {
-        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 416+(iPhone5?88:0)-40, 320, 40)];
+        _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, scrollView.bounds.size.height-40, 320, 40)];
         _bottomView.layer.borderColor = detailBorderColor;
         _bottomView.layer.borderWidth = 1.0f;
-        [self.view addSubview:_bottomView];
+        [scrollView addSubview:_bottomView];
         [_bottomView release];
         
 //        UIButton *btnFavority = [UIButton buttonWithType:UIButtonTypeRoundedRect];

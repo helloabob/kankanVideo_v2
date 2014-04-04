@@ -10,7 +10,7 @@
 #import "KKVideoDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define NAV_VIEW_FRAME              CGRectMake(0, 0, 320, self.view.frame.size.height-44)
+//#define NAV_VIEW_FRAME              CGRectMake(0, 0, 320, self.view.frame.size.height-44)
 
 @interface KKListViewController () {
     NSUInteger                      _currentPageIndex;              //当前页码索引
@@ -35,7 +35,6 @@
 - (void)setChannelId:(NSString *)channelId {
     if (_channelId != channelId) {
         [_channelId release];
-        _channelId = nil;
         _channelId = [channelId retain];
         [self refreshVideoList];
     }
@@ -110,13 +109,16 @@
     //NSLog(@"listcontroller_viewdidload");
     //_arrVideoList = [[NSMutableArray alloc] init];
     
+    _scrollContentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, [KKSysUtils systemVersion]>=7.0?self.view.bounds.size.height-64:self.view.bounds.size.height-44)];
+    _scrollContentView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_scrollContentView];
     
-    
-    _listContentView = [[UIView alloc] initWithFrame:NAV_VIEW_FRAME];
+    CGRect rect = CGRectMake(0, [KKSysUtils systemVersion]>=7.0?64:0, 320, [KKSysUtils systemVersion] >= 7.0?self.view.bounds.size.height-64:self.view.bounds.size.height-44);
+    _listContentView = [[UIView alloc] initWithFrame:rect];
     [self.view addSubview:_listContentView];
     [_listContentView release];
     
-    _tblVideoList = [[UITableView alloc] initWithFrame:_listContentView.frame];
+    _tblVideoList = [[UITableView alloc] initWithFrame:_listContentView.bounds];
     _tblVideoList.delegate = self;
     _tblVideoList.dataSource = self;
     _tblVideoList.backgroundView = nil;
@@ -172,7 +174,8 @@
     CATransition *transition = [CATransition animation];
     transition.duration = 1.0f;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = @"rippleEffect";
+//    transition.type = @"rippleEffect";
+    transition.type = @"oglFlip";
     transition.subtype = kCATransitionFromRight;
     transition.delegate = self;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
@@ -180,7 +183,14 @@
 }
 
 - (void)selectRightAction:(UIEvent *)sender {
-    NSLog(@"aa");
+    CATransition *animation=[CATransition animation];
+    animation.delegate=self;
+    animation.duration=0.5f;
+    animation.timingFunction=UIViewAnimationCurveEaseInOut;
+    animation.type=@"oglFlip";
+    animation.subtype=kCATransitionFromLeft;
+    [self.view.layer addAnimation:animation forKey:@"move in"];
+    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

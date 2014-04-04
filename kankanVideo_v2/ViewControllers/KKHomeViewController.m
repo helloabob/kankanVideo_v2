@@ -11,6 +11,8 @@
 #import "KKListViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "KKMoviePlayerViewController.h"
+
 #define SCENE_FRAME                 CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)
 #define RIGHT_SETTING_VIEW_FRAME    CGRectMake(250,0,70,self.view.frame.size.height)
 #define ITEM_FRAME                  CGRectMake(0,0,100,100)
@@ -322,6 +324,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+//    [self performSelector:@selector(tt) withObject:nil afterDelay:5.0f];
+    
+}
+
+- (void)tt {
+    KKMoviePlayerViewController *pvc = [[KKMoviePlayerViewController alloc] initWithVideoUrl:nil];
+    [self presentViewController:pvc animated:YES completion:nil];
+    [pvc release];
 }
 
 - (void)didReceiveMemoryWarning

@@ -76,7 +76,7 @@
 }
 
 - (void)btnTapped:(UIControlEvents *)sender {
-    [UIView animateWithDuration:1.0f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         [self setAlpha:0];
     }completion:^(BOOL finished){
         [self removeFromSuperview];
